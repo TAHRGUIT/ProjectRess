@@ -195,10 +195,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
           try {
+             
             login();
+             
         } catch (SQLException | ClassNotFoundException ex) {
             jLabel6.setVisible(true);
-            jLabel6.setText("WELCOME");
+            jLabel6.setText("Ereur1");
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -224,7 +226,7 @@ public class Login extends javax.swing.JFrame {
                 login();
             } catch (SQLException | ClassNotFoundException ex) {
                 jLabel6.setVisible(true);
-                jLabel6.setText("WELCOME");
+                jLabel6.setText("Ereeur2");
             }
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
@@ -266,12 +268,17 @@ int x,y;
 
     //Function
         private void login() throws SQLException, ClassNotFoundException {
+          
         Connection connect = new Connection();
         Statement stmt = connect.con.createStatement();
+        
         String SQL = "SELECT * FROM user where name ='" + jTextField2.getText() + "' and password = '" + jPasswordField1.getText() + "'";
+       
         ResultSet results = stmt.executeQuery(SQL);
+         
         if (results.next()) {
             registerUser(results.getString("id_user"));
+            
             this.dispose();
         } else {
             jLabel6.setVisible(true);
