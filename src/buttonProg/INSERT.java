@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package buttonProg;
-
 /**
  *
  * @author Y.T
@@ -22,10 +16,8 @@ public class INSERT {
                 SQL += ",";
             }
         }
-
         SQL += ")";
         return SQL;
-
     }
                   //insertion au chemps specific
              public String queryInsert(String nomTable, String[] nomColonne, String[] contenuTableau) {
