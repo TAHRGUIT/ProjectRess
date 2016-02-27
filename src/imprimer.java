@@ -1,4 +1,5 @@
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -31,7 +32,6 @@ public class imprimer extends javax.swing.JFrame {
 
    private String text;
    private String text2;
-   private String article1;
     public imprimer() {
         text="   Je soussigné, Belahsen Youness, Doyen de la Faculté Polydisciplinaire de Ouarzazate  atteste que Monsieur:  \n" +
 "           - NOM         :     	\n" +
@@ -45,7 +45,6 @@ public class imprimer extends javax.swing.JFrame {
         text2="Le Doyen de la Faculté  Polydisciplinaire Ouarzazate :\n" +
 "- Vu le Dahir  n°1.58.008 du 04 chaâbane 1377 (24 février 1958) portant statut général de la fonction publique tel qu’il a été modifié et complété.\n" +
 "- Vu la demande présentée par l’intéressée.  ";
-        article1="";
         initComponents();
     }
 
@@ -117,19 +116,21 @@ public class imprimer extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-public void openPDF() {
-    Rectangle layout = new Rectangle(PageSize.A4.rotate());
-   layout.setBorderColor(BaseColor.BLACK);
-   layout.setBorderWidth(10);      //Border width  
-   layout.setBorder(Rectangle.BOX); 
-        Document document = new Document(layout);
+    public void imagee(Document document)throws Exception{
+        Image image = Image.getInstance("yassin.png");
+            image.scaleAbsolute(224,70);
+            image.setAlignment(Image.MIDDLE);
+            document.add(image);
+    }
+   
+    public void openPDF() {
+          
+        Document document = new Document(PageSize.A4);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("imprimer test.pdf"));
             
             document.open();
-            Image image = Image.getInstance("logofpo.png");
-            image.setAlignment(Image.MIDDLE);
-            document.add(image);
+            imagee(document);
             SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date now = new java.util.Date();
             String tdnow = td.format(now);  
@@ -140,7 +141,7 @@ public void openPDF() {
                 document.add(new Paragraph(" "));
             }
             
-            Paragraph p = new Paragraph(text, FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            Paragraph p = new Paragraph(text, FontFactory.getFont(FontFactory.TIMES, 16, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p);
             
             Paragraph time = new Paragraph("                Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
@@ -171,34 +172,28 @@ public void openPDF() {
     }
 
 public void conje() {
-    Rectangle layout = new Rectangle(PageSize.A4.rotate());
-   layout.setBorderColor(BaseColor.BLACK);
-   layout.setBorderWidth(10);      //Border width  
-   layout.setBorder(Rectangle.BOX); 
-        Document document = new Document(layout);
+        Document document = new Document(PageSize.A4);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("conjee.pdf"));
             
             document.open();
-            Image image = Image.getInstance("logofpo.png");
-            image.setAlignment(Image.MIDDLE);
-            document.add(image);
+            imagee(document);
             SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date now = new java.util.Date();
             String tdnow = td.format(now);  
-            Paragraph pa = new Paragraph("Décision de congé", FontFactory.getFont(FontFactory.TIMES, 20, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            Paragraph pa = new Paragraph("Décision de congé", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
             pa.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(pa);
-            for(int i=0;i<1;i++){
+            for(int i=0;i<4;i++){
                 document.add(new Paragraph(" "));
             }
             
-            Paragraph p = new Paragraph(text2, FontFactory.getFont(FontFactory.TIMES, 15, Font.NORMAL, BaseColor.DARK_GRAY));
+            Paragraph p = new Paragraph(text2, FontFactory.getFont(FontFactory.TIMES, 14, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p);
-             Paragraph p3 = new Paragraph("DECIDE :", FontFactory.getFont(FontFactory.TIMES, 15, Font.BOLD, BaseColor.DARK_GRAY));
+             Paragraph p3 = new Paragraph("DECIDE :", FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
                          p3.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(p3);
-             Paragraph p4 = new Paragraph("ARTICLE I Un congé d’un .", FontFactory.getFont(FontFactory.TIMES, 15, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+             Paragraph p4 = new Paragraph("ARTICLE I Un congé d’un .", FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLDITALIC, BaseColor.DARK_GRAY));
             document.add(p4);
             Paragraph p5 = new Paragraph(
 "           Est accordé à   :    \n" +
@@ -206,27 +201,26 @@ public void conje() {
 "           GRADE           :    \n" +
 "           Pour la période :   ", FontFactory.getFont(FontFactory.TIMES, 15, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p5);
-  Paragraph p6 = new Paragraph("ARTICLE II", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            Paragraph p6 = new Paragraph("ARTICLE II", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
             document.add(p6);
             Paragraph p7 = new Paragraph("L’intéressé(e) est autorisé à quitter le territoire national durant la période indiquée ci-dessus", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p7);
-              Paragraph p8 = new Paragraph("ARTICLE III", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            Paragraph p8 = new Paragraph("ARTICLE III", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
             document.add(p8);
             Paragraph p9 = new Paragraph("L’intéressé(e) est tenu d’aviser le service du personnel de sa reprise de travail après expiration du  congé sus-visé.", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p9);
+            for(int i=0;i<4;i++){
+                document.add(new Paragraph(" "));
+            }
             
-             Paragraph av = new Paragraph("");
+            Paragraph time = new Paragraph("             Cachet et signature                                        Fait à Ouarzazate le :"+tdnow+"\n"+"\n",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+        
             
-            Paragraph time = new Paragraph("                                         Cachet et signature                                                                       Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
-            Paragraph a = new Paragraph("");
-            Paragraph si = new Paragraph("                                                                                                                                     Signature du  demandeur",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
-
+            Paragraph si = new Paragraph("Signature du demandeur",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
             time.setAlignment(Paragraph.ALIGN_LEFT);
-            si.setAlignment(Paragraph.ALIGN_CENTER);
+            si.setAlignment(Paragraph.ALIGN_RIGHT);
             document.add(time);
             document.add(si);
-            document.add(a);
-            document.add(av);
             document.close();
             
              System.out.println("date2");
@@ -244,9 +238,7 @@ public void conje() {
         System.out.println("qsdqs");
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
