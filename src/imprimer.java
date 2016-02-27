@@ -7,6 +7,7 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import static java.awt.image.ImageObserver.ALLBITS;
@@ -28,10 +29,23 @@ import java.text.SimpleDateFormat;
  */
 public class imprimer extends javax.swing.JFrame {
 
-    /**
-     * Creates new form imprimer
-     */
+   private String text;
+   private String text2;
+   private String article1;
     public imprimer() {
+        text="   Je soussigné, Belahsen Youness, Doyen de la Faculté Polydisciplinaire de Ouarzazate  atteste que Monsieur:  \n" +
+"           - NOM         :     	\n" +
+"           - PRENOM :     \n" +
+"           - CIN           :    \n" +
+"           - D.R.P.P     :   \n" +
+"           \n" +
+"Exerce la fonction d’administrateur 3 éme grade  au sein de notre établissement depuis le.\n" +"\n"
+
+                    + "      Cette attestation est délivrée à l’intéressé(e) pour servir et valoir ce que de droit.\n\n";
+        text2="Le Doyen de la Faculté  Polydisciplinaire Ouarzazate :\n" +
+"- Vu le Dahir  n°1.58.008 du 04 chaâbane 1377 (24 février 1958) portant statut général de la fonction publique tel qu’il a été modifié et complété.\n" +
+"- Vu la demande présentée par l’intéressée.  ";
+        article1="";
         initComponents();
     }
 
@@ -45,6 +59,7 @@ public class imprimer extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,21 +70,37 @@ public class imprimer extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Conjee");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(147, 147, 147)
                 .addComponent(jButton1)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jButton2)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(128, 128, 128))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,8 +109,20 @@ public class imprimer extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
        openPDF();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+      conje();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 public void openPDF() {
-        Document document = new Document(PageSize.A4.rotate());
+    Rectangle layout = new Rectangle(PageSize.A4.rotate());
+   layout.setBorderColor(BaseColor.BLACK);
+   layout.setBorderWidth(10);      //Border width  
+   layout.setBorder(Rectangle.BOX); 
+        Document document = new Document(layout);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("imprimer test.pdf"));
             
@@ -87,7 +130,7 @@ public void openPDF() {
             Image image = Image.getInstance("logofpo.png");
             image.setAlignment(Image.MIDDLE);
             document.add(image);
-            SimpleDateFormat td = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date now = new java.util.Date();
             String tdnow = td.format(now);  
             Paragraph pa = new Paragraph("Attestation de travail", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
@@ -97,15 +140,7 @@ public void openPDF() {
                 document.add(new Paragraph(" "));
             }
             
-            Paragraph p = new Paragraph("   Je soussigné, Belahsen Youness, Doyen de la Faculté Polydisciplinaire de Ouarzazate  atteste que Monsieur:  \n" +
-"           - NOM         :     	\n" +
-"           - PRENOM :     \n" +
-"           - CIN           :    \n" +
-"           - D.R.P.P     :   \n" +
-"           \n" +
-"Exerce la fonction d’administrateur 3 éme grade  au sein de notre établissement depuis le.\n" +"\n"
-
-                    + "      Cette attestation est délivrée à l’intéressé(e) pour servir et valoir ce que de droit.\n\n", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            Paragraph p = new Paragraph(text, FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p);
             
             Paragraph time = new Paragraph("                Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
@@ -124,6 +159,81 @@ public void openPDF() {
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
                 desktop.open(new File("imprimer test.pdf"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+             
+             System.out.println("date");
+        } catch (Exception ex) {
+            
+        System.out.println("qsdqs");
+        }
+    }
+
+public void conje() {
+    Rectangle layout = new Rectangle(PageSize.A4.rotate());
+   layout.setBorderColor(BaseColor.BLACK);
+   layout.setBorderWidth(10);      //Border width  
+   layout.setBorder(Rectangle.BOX); 
+        Document document = new Document(layout);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("conjee.pdf"));
+            
+            document.open();
+            Image image = Image.getInstance("logofpo.png");
+            image.setAlignment(Image.MIDDLE);
+            document.add(image);
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date now = new java.util.Date();
+            String tdnow = td.format(now);  
+            Paragraph pa = new Paragraph("Décision de congé", FontFactory.getFont(FontFactory.TIMES, 20, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            pa.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(pa);
+            for(int i=0;i<1;i++){
+                document.add(new Paragraph(" "));
+            }
+            
+            Paragraph p = new Paragraph(text2, FontFactory.getFont(FontFactory.TIMES, 15, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p);
+             Paragraph p3 = new Paragraph("DECIDE :", FontFactory.getFont(FontFactory.TIMES, 15, Font.BOLD, BaseColor.DARK_GRAY));
+                         p3.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(p3);
+             Paragraph p4 = new Paragraph("ARTICLE I Un congé d’un .", FontFactory.getFont(FontFactory.TIMES, 15, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            document.add(p4);
+            Paragraph p5 = new Paragraph(
+"           Est accordé à   :    \n" +
+"           C.I.N           :    \n" +
+"           GRADE           :    \n" +
+"           Pour la période :   ", FontFactory.getFont(FontFactory.TIMES, 15, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p5);
+  Paragraph p6 = new Paragraph("ARTICLE II", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            document.add(p6);
+            Paragraph p7 = new Paragraph("L’intéressé(e) est autorisé à quitter le territoire national durant la période indiquée ci-dessus", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p7);
+              Paragraph p8 = new Paragraph("ARTICLE III", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            document.add(p8);
+            Paragraph p9 = new Paragraph("L’intéressé(e) est tenu d’aviser le service du personnel de sa reprise de travail après expiration du  congé sus-visé.", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p9);
+            
+             Paragraph av = new Paragraph("");
+            
+            Paragraph time = new Paragraph("                                         Cachet et signature                                                                       Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+            Paragraph a = new Paragraph("");
+            Paragraph si = new Paragraph("                                                                                                                                     Signature du  demandeur",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+
+            time.setAlignment(Paragraph.ALIGN_LEFT);
+            si.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(time);
+            document.add(si);
+            document.add(a);
+            document.add(av);
+            document.close();
+            
+             System.out.println("date2");
+            /* Open Pdf */
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("conjee.pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
@@ -171,5 +281,6 @@ public void openPDF() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
