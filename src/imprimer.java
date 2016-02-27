@@ -8,7 +8,10 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import static java.awt.image.ImageObserver.ALLBITS;
@@ -32,6 +35,7 @@ public class imprimer extends javax.swing.JFrame {
 
    private String text;
    private String text2;
+    private String text3;
     public imprimer() {
         text="   Je soussigné, Belahsen Youness, Doyen de la Faculté Polydisciplinaire de Ouarzazate  atteste que Monsieur:  \n" +
 "           - NOM         :     	\n" +
@@ -45,6 +49,17 @@ public class imprimer extends javax.swing.JFrame {
         text2="Le Doyen de la Faculté  Polydisciplinaire Ouarzazate :\n" +
 "- Vu le Dahir  n°1.58.008 du 04 chaâbane 1377 (24 février 1958) portant statut général de la fonction publique tel qu’il a été modifié et complété.\n" +
 "- Vu la demande présentée par l’intéressée.  ";
+        
+           text3="   Je soussigné, Belahsen Youness, Doyen de la Faculté Polydisciplinaire de Ouarzazate  atteste que Monsieur:  \n" +
+"           - NOM       :     	\n" +
+"           - PRENOM    :     \n" +
+"           - CIN       :    \n" +
+"           - D.R.P.P   :   \n" +
+"           - GRADE     :   \n" +
+"           \n" +
+"Exerce la fonction d’enseignant chercheur au sein de notre établissement depuis le.\n" +"\n"
+
+                    + "      Cette attestation est délivrée à l’intéressé(e) pour servir et valoir ce que de droit.\n\n";
         initComponents();
     }
 
@@ -59,10 +74,13 @@ public class imprimer extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("OK");
+        jButton1.setText("A Travail Employe");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -81,25 +99,61 @@ public class imprimer extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("conjee exp");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setText("A Travail PRof");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Quitter territoire");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jButton1)
-                .addGap(58, 58, 58)
-                .addComponent(jButton2)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,6 +170,22 @@ public class imprimer extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+conje_exp();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+       attestation_travail_prof();
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+       quitter_territoire();
+    }//GEN-LAST:event_jButton5MouseClicked
     public void imagee(Document document)throws Exception{
         Image image = Image.getInstance("yassin.png");
             image.scaleAbsolute(224,70);
@@ -170,7 +240,53 @@ public class imprimer extends javax.swing.JFrame {
         System.out.println("qsdqs");
         }
     }
+public void attestation_travail_prof() {
+          
+        Document document = new Document(PageSize.A4);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Attestation de travail Professeur.pdf"));
+            
+            document.open();
+            imagee(document);
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date now = new java.util.Date();
+            String tdnow = td.format(now);  
+            Paragraph pa = new Paragraph("Attestation de travail", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            pa.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(pa);
+            for(int i=0;i<3;i++){
+                document.add(new Paragraph(" "));
+            }
+            
+            Paragraph p = new Paragraph(text3, FontFactory.getFont(FontFactory.TIMES, 16, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p);
+            
+            Paragraph time = new Paragraph("                Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
+            Paragraph a = new Paragraph("");
+            Paragraph si = new Paragraph("                 Signature:",FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
 
+            time.setAlignment(Paragraph.ALIGN_CENTER);
+            si.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(time);
+            document.add(si);
+            document.add(a);
+            document.close();
+            
+             System.out.println("date2");
+            /* Open Pdf */
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("Attestation de travail Professeur.pdf"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+             
+             System.out.println("date");
+        } catch (Exception ex) {
+            
+        System.out.println("qsdqs");
+        }
+    }
 public void conje() {
         Document document = new Document(PageSize.A4);
         try {
@@ -238,7 +354,147 @@ public void conje() {
         System.out.println("qsdqs");
         }
     }
-   
+ public void conje_exp() {
+        Document document = new Document(PageSize.A4);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("conjee_exp.pdf"));
+            
+            document.open();
+            imagee(document);
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date now = new java.util.Date();
+            String tdnow = td.format(now);  
+            Paragraph pa = new Paragraph("Décision de congé", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            pa.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(pa);
+            for(int i=0;i<4;i++){
+                document.add(new Paragraph(" "));
+            }
+            
+            Paragraph p = new Paragraph(text2, FontFactory.getFont(FontFactory.TIMES, 14, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p);
+             Paragraph p3 = new Paragraph("DECIDE :", FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+                         p3.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(p3);
+             Paragraph p4 = new Paragraph("ARTICLE I", FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            document.add(p4);
+            Paragraph p5 = new Paragraph(
+"           Un congé Exceptionnel d’une durée de ……jours\n"+
+"           Est accordé à   :    \n" +
+"           C.I.N           :    \n" +
+"           GRADE           :    \n" +
+"           Pour la période :   ", FontFactory.getFont(FontFactory.TIMES, 15, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p5);
+            Paragraph p6 = new Paragraph("ARTICLE II", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            document.add(p6);
+            Paragraph p7 = new Paragraph("L’intéressé(e) est autorisé à quitter le territoire national durant la période indiquée ci-dessus", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p7);
+            Paragraph p8 = new Paragraph("ARTICLE III", FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLDITALIC, BaseColor.DARK_GRAY));
+            document.add(p8);
+            Paragraph p9 = new Paragraph("L’intéressé(e) est tenu d’aviser le service du personnel de sa reprise de travail après expiration du  congé sus-visé.", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            document.add(p9);
+            for(int i=0;i<4;i++){
+                document.add(new Paragraph(" "));
+            }
+            
+            Paragraph time = new Paragraph("             Cachet et signature                                        Fait à Ouarzazate le :"+tdnow+"\n"+"\n",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+        
+            
+            Paragraph si = new Paragraph("Signature du demandeur",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+            time.setAlignment(Paragraph.ALIGN_LEFT);
+            si.setAlignment(Paragraph.ALIGN_RIGHT);
+            document.add(time);
+            document.add(si);
+            document.close();
+            
+             System.out.println("date2");
+            /* Open Pdf */
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("conjee_exp.pdf"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+             
+             System.out.println("date");
+        } catch (Exception ex) {
+            
+        System.out.println("qsdqs");
+        }
+    }  
+ public void quitter_territoire(){
+     
+
+       Document document = new Document(PageSize.A4);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("quitter territoire.pdf"));
+              
+                document.open();
+            imagee(document);
+           
+            document.open();
+            imagee(document);
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date now = new java.util.Date();
+            String tdnow = td.format(now);  
+            Paragraph pa = new Paragraph("Autorisation de quitter le territoire", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            pa.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(pa);
+            for(int i=0;i<4;i++){
+                document.add(new Paragraph(" "));
+            }
+       
+ 
+ 
+//      cell = new PdfPCell(new Phrase("Fusion de 2 cellules de la première colonne"));
+//      cell.setRowspan(2);
+//      table.addCell(cell);
+      PdfPTable table = new PdfPTable(2);
+       PdfPCell cell=new PdfPCell();
+      //contenu du tableau.
+        table.addCell("\nNom:\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nPrenom:\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nGRADE :\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nADRESSE PERSONNELLE :\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nAFFECTATION :\n\n");
+        table.addCell("\n\n");
+         
+        
+         cell = new PdfPCell(new Phrase("\nJ’ai  l’honneur de solliciter une autorisation  d’absence.\n\n"));
+         cell.setColspan(2);
+      table.addCell(cell);
+         
+        table.addCell("\nDU:\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nAU:\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nMOTIF :\n\n");
+        table.addCell("\n\n");
+        table.addCell("\nAVIS DU  CHEF \nD’ETABLISSEMENT:\n\n");
+        table.addCell("\n\nFAVORABLE.def\n\n");
+          cell = new PdfPCell(new Phrase("\nFait à Ouarzazate le :"+tdnow+"\n\n"));
+      cell.setColspan(2);
+      
+      table.addCell(cell);
+        table.addCell("Signature du  demandeur\n\n\n\n\n\n\n\n\n");
+        table.addCell("Cachet  et  signature\n\n\n\n\n\n\n\n");
+        document.add(table);
+        document.close();
+          Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("quitter territoire.pdf"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+            
+         }catch(Exception ex){
+         System.out.print("catch");
+         }
+ }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -274,5 +530,8 @@ public void conje() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
 }
