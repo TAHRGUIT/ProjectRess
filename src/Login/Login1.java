@@ -133,7 +133,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\min.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/min.png"))); // NOI18N
         jLabel5.setToolTipText("Minimize");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +146,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\exi1.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/exi1.png"))); // NOI18N
         jLabel4.setToolTipText("Close");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -168,7 +168,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel3.setText("Login");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 140, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\FPO logo1.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/FPO logo1.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, 80));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Key-Access-01-128.png"))); // NOI18N
@@ -177,7 +177,6 @@ public class Login1 extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/User-48.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 40, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\Login1.png")); // NOI18N
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);

@@ -128,7 +128,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="11"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Projets\ZApp FPO\src\miseenpage\min.png"/>
+          <Image iconType="3" name="/Login/min.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Minimize"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -154,7 +154,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Projets\ZApp FPO\src\miseenpage\exi1.png"/>
+          <Image iconType="3" name="/Login/exi1.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Close"/>
         <Property name="verticalAlignment" type="int" value="3"/>
@@ -192,7 +192,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Projets\ZApp FPO\src\miseenpage\FPO logo1.png"/>
+          <Image iconType="3" name="/Login/FPO logo1.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -226,11 +226,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\Projets\ZApp FPO\src\miseenpage\Login1.png"/>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseDragged"/>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MousePressed"/>

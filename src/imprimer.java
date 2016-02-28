@@ -1,4 +1,8 @@
-package impri;
+
+
+
+
+
 
 
 import com.itextpdf.text.BadElementException;
@@ -20,6 +24,7 @@ import static java.awt.image.ImageObserver.ALLBITS;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
@@ -135,11 +140,10 @@ public class imprimer extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,10 +193,12 @@ conje_exp();
        quitter_territoire();
     }//GEN-LAST:event_jButton5MouseClicked
     public void imagee(Document document)throws Exception{
-        Image image = Image.getInstance("yassin.png");
+          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
+            Image image=Image.getInstance(imageUrl+"logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
             document.add(image);
+            
     }
    
     public void openPDF() {
@@ -202,7 +208,9 @@ conje_exp();
             PdfWriter.getInstance(document, new FileOutputStream("imprimer test.pdf"));
             
             document.open();
+            
             imagee(document);
+           
             SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date now = new java.util.Date();
             String tdnow = td.format(now);  
@@ -237,8 +245,8 @@ conje_exp();
             }
              
              System.out.println("date");
+             
         } catch (Exception ex) {
-            
         System.out.println("qsdqs");
         }
     }
@@ -247,8 +255,8 @@ public void attestation_travail_prof() {
         Document document = new Document(PageSize.A4);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("Attestation de travail Professeur.pdf"));
-            
             document.open();
+            
             imagee(document);
             SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date now = new java.util.Date();
