@@ -8,6 +8,7 @@ package Login;
 import Connexion.Connection;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import Interface.after_auth;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,12 +20,12 @@ import java.sql.Statement;
  *
  * @author Y.T
  */
-public class Login extends javax.swing.JFrame {
+public class Login1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login
+     * Creates new form Login1
      */
-    public Login() {
+    public Login1() {
         initComponents();
     }
 
@@ -43,13 +44,14 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 300));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 300));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -57,7 +59,12 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setText("Login");
+        jTextField2.setBackground(java.awt.SystemColor.controlHighlight);
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText("Username");
+        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField2FocusLost(evt);
@@ -76,9 +83,13 @@ public class Login extends javax.swing.JFrame {
                 jTextField2KeyPressed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 150, 30));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 260, 40));
 
-        jPasswordField1.setText("123456");
+        jPasswordField1.setBackground(java.awt.SystemColor.controlHighlight);
+        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(102, 102, 102));
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField1.setText("lahyani");
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField1FocusGained(evt);
@@ -97,9 +108,11 @@ public class Login extends javax.swing.JFrame {
                 jPasswordField1KeyPressed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 150, 30));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 260, 40));
 
-        jButton1.setText("Login");
+        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1.setText("LOG IN");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -107,17 +120,20 @@ public class Login extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton1MousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 130, 40));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 310, 40));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 310, 40));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText(" -");
+        jLabel5.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\min.png")); // NOI18N
         jLabel5.setToolTipText("Minimize");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,12 +141,12 @@ public class Login extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 20, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 7, 20, 20));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("x");
+        jLabel4.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\exi1.png")); // NOI18N
         jLabel4.setToolTipText("Close");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -145,12 +161,23 @@ public class Login extends javax.swing.JFrame {
                 jLabel4MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 20, 20));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 5, 20, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/logofpo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 320, 70));
+        jLabel3.setFont(new java.awt.Font("Tekton Pro", 0, 60)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Login");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 140, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Login1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\FPO logo1.png")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, 80));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Key-Access-01-128.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 40, 40));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/User-48.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 40, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\Projets\\ZApp FPO\\src\\miseenpage\\Login1.png")); // NOI18N
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);
@@ -161,20 +188,30 @@ public class Login extends javax.swing.JFrame {
                 jLabel1MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
         if (jTextField2.getText().isEmpty()) {
-            jTextField2.setText("Login");
+            jTextField2.setText("Username");
         }
     }//GEN-LAST:event_jTextField2FocusLost
 
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        if (jTextField2.getText().equalsIgnoreCase("username")) {
+            jTextField2.setText(null);
+        }
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void jTextField2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseReleased
+        jLabel6.setVisible(false);
+    }//GEN-LAST:event_jTextField2MouseReleased
+
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-            if(jTextField2.getText().equalsIgnoreCase("login"))
-          jTextField2.setText(null);
+        if(jTextField2.getText().equalsIgnoreCase("username"))
+        jTextField2.setText(null);
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 login();
@@ -183,45 +220,24 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField2KeyPressed
 
-    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
-       if (jTextField2.getText().equalsIgnoreCase("login")) {
-            jTextField2.setText(null);
-        }
-    }//GEN-LAST:event_jTextField2MouseClicked
-
-    private void jTextField2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseReleased
-         jLabel6.setVisible(false);
-    }//GEN-LAST:event_jTextField2MouseReleased
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-          try {
-             
-            login();
-             
-        } catch (SQLException | ClassNotFoundException ex) {
-            jLabel6.setVisible(true);
-            jLabel6.setText("Ereur1");
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MousePressed
-
     private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
-       if (jPasswordField1.getText().equalsIgnoreCase("123456")) {
+        if (jPasswordField1.getText().equalsIgnoreCase("123456789")) {
             jPasswordField1.setText(null);
         }
     }//GEN-LAST:event_jPasswordField1FocusGained
 
     private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
-       if (jPasswordField1.getText().isEmpty()) {
-            jPasswordField1.setText("123456");
+        if (jPasswordField1.getText().isEmpty()) {
+            jPasswordField1.setText("123456789");
         }
     }//GEN-LAST:event_jPasswordField1FocusLost
 
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+
+    }//GEN-LAST:event_jPasswordField1MouseClicked
+
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-           if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 login();
             } catch (SQLException | ClassNotFoundException ex) {
@@ -231,11 +247,20 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       jLabel6.setVisible(false);
-        this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 500, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
-    
-    }//GEN-LAST:event_formWindowOpened
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+
+            login();
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            jLabel6.setVisible(true);
+            jLabel6.setText("Ereur1");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+      
+    }//GEN-LAST:event_jButton1MousePressed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.setState(this.ICONIFIED);
@@ -253,20 +278,23 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MousePressed
 
-    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
-          this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);
-    }//GEN-LAST:event_jLabel1MouseDragged
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+                this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 200, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
+    }//GEN-LAST:event_formWindowOpened
 int x,y;
+    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+        this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);
+    }//GEN-LAST:event_jLabel1MouseDragged
+
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         x = evt.getX();
-        y = evt.getY();
+        y = evt.getY(); 
     }//GEN-LAST:event_jLabel1MousePressed
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
       
-    }//GEN-LAST:event_jPasswordField1MouseClicked
-
-    //Function
+    }//GEN-LAST:event_jButton1MouseReleased
+//Function
         private void login() throws SQLException, ClassNotFoundException {
           
         Connection connect = new Connection();
@@ -278,7 +306,11 @@ int x,y;
          
         if (results.next()) {
             registerUser(results.getString("id_user"));
-            
+            if (results.getString("password").equals("lahyani")) {
+               after_auth fn = new after_auth();
+                System.out.println("qsfs");
+                        fn.setVisible(true);
+            }
             this.dispose();
         } else {
             jLabel6.setVisible(true);
@@ -313,20 +345,20 @@ int x,y;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login1().setVisible(true);
             }
         });
     }
@@ -335,9 +367,12 @@ int x,y;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
