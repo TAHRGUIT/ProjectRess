@@ -25,6 +25,7 @@ public class SELECT {
             }
         }
         SQL += " FROM " + nomTable;
+         System.out.println(SQL);
         return SQL;
     }
               // selection avec condition et nom des table
@@ -40,4 +41,8 @@ public class SELECT {
         SQL += " FROM " + nomTable + " WHERE " + etat;
         return SQL;
     }
+         public String nbselect(String nomTable){
+             SQL="SELECT count(*) from "+nomTable;
+        return SQL;
+         }
 }

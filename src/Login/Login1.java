@@ -165,11 +165,11 @@ public class Login1 extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tekton Pro", 0, 60)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Login");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 140, 60));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Loginico.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 160, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/FPO logo1.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, 80));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Key-Access-01-128.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 40, 40));
@@ -177,6 +177,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/User-48.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 40, 40));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Login1.png"))); // NOI18N
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);
@@ -278,7 +279,7 @@ public class Login1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 200, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
+this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 200, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
     }//GEN-LAST:event_formWindowOpened
 int x,y;
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged

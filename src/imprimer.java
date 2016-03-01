@@ -194,6 +194,7 @@ conje_exp();
     }//GEN-LAST:event_jButton5MouseClicked
     public void imagee(Document document)throws Exception{
           URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
+          System.out.println(imageUrl);
             Image image=Image.getInstance(imageUrl+"logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
