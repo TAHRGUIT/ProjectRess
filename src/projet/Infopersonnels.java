@@ -21,11 +21,11 @@ public class Infopersonnels extends InfoPersonnes {
    
    private String lieudenaissance[]={""};
    
-   private Date datedenaissance[];
+  private Date datedenaissance[];
    
    private String situationfamiliale[]={""};
    
-   private Date daterecrutement[];
+  // private String daterecrutement[];
    
    private String echelon[]={""};
    
@@ -37,6 +37,8 @@ public class Infopersonnels extends InfoPersonnes {
    
    private String situationAdministrative[]={""};
    
+   private String sex[]={""};
+   
     public Infopersonnels(){
         super();
           int i=0;
@@ -47,29 +49,51 @@ public class Infopersonnels extends InfoPersonnes {
         Statement stmt = connect.con.createStatement();
         SELECT s = new SELECT();
      
-        String tab []={"NOM","PRENOM","SOM","CIN","GRADE","CADRE"};
-        String SQL = s.querySelect(tab, "infopersonnes");
+        String tab []={"SEX","NOMAR","PRENOMAR","DATE_NAISSANCE","LIEU_DE_NAiSSANCE","SITUATION_FAMILIALE","SITUATION_ADMINISTRATIVE","DATE_RECRUTMENT","ECHELLE","ECHELON"};
+        String SQL = s.querySelect(tab, "infopersonnels");
         ResultSet results = stmt.executeQuery(SQL);
                while(results.next()) {
-           for(i=0;i<nom.length;i++){
-               t= results.getString("NOM");
-               nom[i]=t;       
-                System.out.print(nom[i]+"  ");
-               t = results.getString("PRENOM");
-               prenom[i]=t;
-                System.out.print(prenom[i]+"  ");
-                t= results.getString("SOM");
-               som[i]=t;       
-                System.out.print(som[i]+"  ");
-               t = results.getString("CIN");
-               cin[i]=t;
-                System.out.print(cin[i]+"  ");
-                t= results.getString("GRADE");
-               grade[i]=t;       
-                System.out.print(grade[i]+"  ");
-               t = results.getString("CADRE");
-               cadre[i]=t;
-                System.out.print(cadre[i]+"  \n");
+           for(i=0;i<sex.length;i++){
+               t= results.getString("SEX");
+               sex[i]=t;       
+                System.out.print(sex[i]+"  ");
+                
+               t = results.getString("NOMAR");
+               nomar[i]=t;
+                System.out.print(nomar[i]+"  ");
+                
+                t= results.getString("PRENOMAR");
+               prenomar[i]=t;       
+                System.out.print(prenomar[i]+"  ");
+                
+               datedenaissance[i]=results.getDate("DATE_NAISSANCE");
+                System.out.print(datedenaissance[i]+"  ");
+                
+                t= results.getString("LIEU_DE_NAiSSANCE");
+               lieudenaissance[i]=t;       
+                System.out.print(lieudenaissance[i]+"  ");
+                
+               t = results.getString("SITUATION_FAMILIALE");
+               situationfamiliale[i]=t;
+                System.out.print(situationfamiliale[i]+"  \n");
+                
+                  t = results.getString("SITUATION_ADMINISTRATIVE");
+               situationAdministrative[i]=t;
+                System.out.print(situationAdministrative[i]+"  \n");
+                
+                 
+//               daterecrutement[i]=results.getString("DATE_RECRUTMENT");
+//                System.out.print(daterecrutement[i]+"  \n");
+                
+                  t = results.getString("ECHELON");
+               echelon[i]=t;
+                System.out.print(echelon[i]+"  \n");
+                
+                  t = results.getString("ECHELLE");
+               echelle[i]=t;
+                System.out.print(echelle[i]+"  \n");
+                
+           
                 
             //jLabel1.setText(results.getString("NOM"));
         }    
@@ -77,5 +101,8 @@ public class Infopersonnels extends InfoPersonnes {
         } catch (Exception ex) {
             Logger.getLogger(InfoPersonnes.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+       public static void main(String[] args) {
+        Infopersonnels a = new Infopersonnels();
     }
 }
