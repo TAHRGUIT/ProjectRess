@@ -25,6 +25,7 @@ public class Infopersonnels extends InfoPersonnes {
    
    private String situationfamiliale[]={""};
    
+   
   // private String daterecrutement[];
    
    private String echelon[]={""};
