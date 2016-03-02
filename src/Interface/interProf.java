@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
-
+import projet.*;
 import Connexion.Connection;
 import buttonProg.SELECT;
 import java.awt.Toolkit;
@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -25,21 +26,17 @@ public class interProf extends javax.swing.JFrame {
      */
     public interProf() {
         initComponents();
-        Connection connect;
         try {
-        connect = new Connection();
-        Statement stmt = connect.con.createStatement();
-        SELECT s = new SELECT();
-        String tab []={"SOM","NOM","PRENOM","SPECIALITE","CIN","LIEU_DE_NAISSANCE","DATE_DE_NAISSANCE","SITUATION_FAMILIALE","DATE_RECRUTEMENT","CADRE","GRADE","ECHELON","SITUATION_ADMINISTRATVE"
-};
-        String SQL = s.querySelect(tab, "infopersonnels");
-         
-        ResultSet results = stmt.executeQuery(SQL);
+            Infopersonnels s = new Infopersonnels();
+         InfoPersonnes l = new InfoPersonnes();
+            DefaultTableModel mod = (DefaultTableModel) jTable1.getModel();
+      
+        for(int i=0;i<s.echelle.length;i++){
+      mod.addRow(new Object[]{l.getNom()[i],l.getPrenom()[i],l.getCin()[i],s.lieudenaissance[i],s.datedenaissance[i],s.situationfamiliale[i],s.SEPCIALITE[i],s.daterecrutement[i],l.getGrade()[i],l.getSom()[i],l.getcadre()[i],s.echelon[i],s.situationAdministrative[i]});
+        
+        }
+    
             
-        if (results.next()) {
-            jLabel1.setText(results.getString("NOM"));
-            jTable1.setModel(DbUtils.resultSetToTableModel(results));
-        }    
         } catch (Exception ex) {
             Logger.getLogger(interProf.class.getName()).log(Level.SEVERE, null, ex);
         }             
@@ -58,6 +55,9 @@ public class interProf extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -107,36 +107,35 @@ public class interProf extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, -2, 20, 20));
 
+        jButton1.setText("ajouter");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
+
+        jButton3.setText("jButton3");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
+
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "SOM", "NOM", "PRENOM", "SEPCIALITE", "CIN", "LIEU DE NAISSANCE", "DATE DE NAISSANCE", "SITUATION FAMILIALE", "DATE RECRUTEMENT", "CADRE", "GRADE", "ECHELON"
+                "NOM", "PRENOM", "CIN", "LIEU DE NAISSANCE", "DATE DE NAISSANCE", "SITUATION FAMILIALE", "SEPCIALITE", "DATE RECRUTEMENT", "GRADE", "SOM", "CADRE", "ECHELON", "situation administrative"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 780, 190));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 790, 260));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login1.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
-        jLabel1.setMinimumSize(new java.awt.Dimension(800, 600));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +159,10 @@ public class interProf extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
                  this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 400, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -197,6 +200,9 @@ public class interProf extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

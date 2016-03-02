@@ -20,7 +20,4 @@ public class Attestations extends InfoPersonnes {
     public Attestations() {
         super();
     }
-    
- 
-
 }

@@ -19,17 +19,17 @@ public class InfoPersonnes {
    
    private int id[]={2};
   
-   protected String nom[]={""};
+   protected String nom[];
    
-   protected String prenom[]={""};
+   protected String prenom[];
    
-   protected String som[]={""};
+   protected String som[];
    
-   protected String cin[]={""};
+   protected String cin[];
    
-   protected String grade[]={""};
+   protected String grade[];
    
-   protected String cadre[]={""};
+   protected String cadre[];
    
    
    //constructeurs
@@ -42,37 +42,70 @@ public class InfoPersonnes {
         connect = new Connection();
         Statement stmt = connect.con.createStatement();
         SELECT s = new SELECT();
-     
+        
+        int m=0;
+        SELECT sn = new SELECT();
+         Statement stmt2 = connect.con.createStatement();
+        String SQL2 =sn.nbselect("infopersonnes");
+         ResultSet results2 = stmt2.executeQuery(SQL2);
+        while(results2.next()) {
+         m= results2.getInt("count(*)");
+        }
+                    nom = new String[m];
+                    prenom = new String[m];
+                    som = new String[m];
+                    cin = new String[m];
+                    grade = new String[m];
+                    cadre = new String[m];
+             
+                      
         String tab []={"NOM","PRENOM","SOM","CIN","GRADE","CADRE"};
         String SQL = s.querySelect(tab, "infopersonnes");
         ResultSet results = stmt.executeQuery(SQL);
                while(results.next()) {
-           for(i=0;i<nom.length;i++){
+       
                t= results.getString("NOM");
                nom[i]=t;       
-                System.out.print(nom[i]+"  ");
+               
                t = results.getString("PRENOM");
                prenom[i]=t;
-                System.out.print(prenom[i]+"  ");
+                
                 t= results.getString("SOM");
                som[i]=t;       
-                System.out.print(som[i]+"  ");
+               
                t = results.getString("CIN");
                cin[i]=t;
-                System.out.print(cin[i]+"  ");
+             
                 t= results.getString("GRADE");
                grade[i]=t;       
-                System.out.print(grade[i]+"  ");
+              
                t = results.getString("CADRE");
                cadre[i]=t;
-                System.out.print(cadre[i]+"  \n");
-                
-            //jLabel1.setText(results.getString("NOM"));
-        }    
+        i++;   
         }
         } catch (Exception ex) {
             Logger.getLogger(InfoPersonnes.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
+    
     }
+     public String[] getNom(){
+     return nom;
+     }
+     public String[] getPrenom (){
+     return prenom;
+     }
+         public String[] getSom (){
+     return som;
+     }       
+      public String[] getCin (){
+     return cin;
+     }
+      public String[] getGrade (){
+     return grade;
+     }
+   public String[] getcadre (){
+     return cadre;
+     }
+     
     
 }

@@ -29,7 +29,7 @@ public class INSERT {
                 SQL += ",";
             }
         }
-        SQL += ") VALUES(";
+        SQL += ")VALUES(";
         for (i = 0; i <= contenuTableau.length - 1; i++) {
             SQL += "'" + contenuTableau[i] + "'";
             if (i < contenuTableau.length - 1) {
