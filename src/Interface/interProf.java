@@ -6,14 +6,18 @@
 package Interface;
 import projet.*;
 import Connexion.Connection;
+import buttonProg.DELETE;
 import buttonProg.SELECT;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
+import static sun.util.calendar.CalendarUtils.mod;
+import static sun.util.calendar.CalendarUtils.mod;
 
 /**
  *
@@ -24,12 +28,13 @@ public class interProf extends javax.swing.JFrame {
     /**
      * Creates new form interProf
      */
+      DefaultTableModel mod;
     public interProf() {
         initComponents();
         try {
             Infopersonnels s = new Infopersonnels();
          InfoPersonnes l = new InfoPersonnes();
-            DefaultTableModel mod = (DefaultTableModel) jTable1.getModel();
+            mod = (DefaultTableModel) jTable1.getModel();
       
         for(int i=0;i<s.echelle.length;i++){
       mod.addRow(new Object[]{l.getNom()[i],l.getPrenom()[i],l.getCin()[i],s.lieudenaissance[i],s.datedenaissance[i],s.situationfamiliale[i],s.SEPCIALITE[i],s.daterecrutement[i],l.getGrade()[i],l.getSom()[i],l.getcadre()[i],s.echelon[i],s.situationAdministrative[i]});
@@ -115,7 +120,12 @@ public class interProf extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Supprimer");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
 
         jButton3.setText("jButton3");
@@ -163,6 +173,20 @@ public class interProf extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+      try{
+          DELETE delete=new DELETE();
+          String temtab[]= new String[13];
+          for(int i=0;i<13;i++){
+         temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
+       }
+          String sql4="DELETE FROM 'infopersonnes' WHERE NOM='"+temtab[0]+"'";
+          System.out.println(sql4);
+      }catch(Exception ex){
+      System.out.println("n'est pas selectionee");
+      }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments

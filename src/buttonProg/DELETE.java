@@ -11,6 +11,7 @@ public class DELETE {
          public String queryDelete(String nomTable, String etat) {
              
         SQL = "DELETE FROM " + nomTable + " WHERE " + etat;
+        
         return SQL;
 
     }
