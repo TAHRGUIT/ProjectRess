@@ -15,9 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.DbUtils;
-import static sun.util.calendar.CalendarUtils.mod;
-import static sun.util.calendar.CalendarUtils.mod;
+
 
 /**
  *
@@ -25,9 +23,7 @@ import static sun.util.calendar.CalendarUtils.mod;
  */
 public class interProf extends javax.swing.JFrame {
 
-    /**
-     * Creates new form interProf
-     */
+    static String temtab[]= new String[13];
       DefaultTableModel mod;
     public interProf() {
         initComponents();
@@ -40,10 +36,10 @@ public class interProf extends javax.swing.JFrame {
       mod.addRow(new Object[]{l.getNom()[i],l.getPrenom()[i],l.getCin()[i],s.lieudenaissance[i],s.datedenaissance[i],s.situationfamiliale[i],s.SEPCIALITE[i],s.daterecrutement[i],l.getGrade()[i],l.getSom()[i],l.getcadre()[i],s.echelon[i],s.situationAdministrative[i]});
         
         }
-    
+
             
         } catch (Exception ex) {
-            Logger.getLogger(interProf.class.getName()).log(Level.SEVERE, null, ex);
+           System.out.print("verifier les donnees ...");
         }             
         
     }
@@ -57,60 +53,20 @@ public class interProf extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/min.png"))); // NOI18N
-        jLabel5.setToolTipText("Minimize");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, 20, 20));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/FPO logo1.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/exi1.png"))); // NOI18N
-        jLabel4.setToolTipText("Close");
-        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel4MousePressed(evt);
-            }
-        });
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, -2, 20, 20));
 
         jButton1.setText("ajouter");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,7 +84,12 @@ public class interProf extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
 
-        jButton3.setText("jButton3");
+        jButton3.setText("modifier");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -144,27 +105,16 @@ public class interProf extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 790, 260));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login1.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        jButton4.setText("Les feuilles d'un prof");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        this.setState(this.ICONIFIED);
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-
-    }//GEN-LAST:event_jLabel4MouseEntered
-
-    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
                  this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 400, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
@@ -176,17 +126,49 @@ public class interProf extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
       try{
-          DELETE delete=new DELETE();
-          String temtab[]= new String[13];
+          Connection connect;
+         for(int i=0;i<13;i++){
+         temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
+       }
+             connect = new Connection();
+        Statement stmt = connect.con.createStatement();
+      
+          String sql4="DELETE FROM `infopersonnes` WHERE NOM='"+temtab[0]+"'and PRENOM='"+temtab[1]+"'and GRADE='"+temtab[8]+"'and SOM='"+temtab[9]+"'and CADRE='"+temtab[10]+"'";
+          System.out.println(temtab[10]);
+          stmt.executeUpdate(sql4);
+            String sql3="DELETE FROM `infopersonnels` WHERE LIEU_DE_NAISSANCE='"+temtab[3]+"'and DATE_NAISSANCE='"+temtab[4]+"'and SITUATION_FAMILIALE='"+temtab[5]+"'and SEPCIALITE='"+temtab[6]+"'and DATE_RECRUTMENT='"+temtab[7]+"' and ECHELON='"+temtab[11]+"' and SITUATION_ADMINISTRATIVE='"+temtab[12]+"'";
+            System.out.println(temtab[10]);
+            stmt.executeUpdate(sql3);
+           System.out.println("c fais");
+           this.dispose();
+           interProf i =new interProf();
+           i.setVisible(true);
+      }catch(Exception ex){
+      System.out.println(" le prof n'est pas selectionee");
+      }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+          try{  
+        for(int i=0;i<13;i++){
+         temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
+       }
+        this.dispose();
+        Update_prof  i =new Update_prof();
+     i.setVisible(true);}
+          catch(Exception ex){
+              System.err.println("veillez selectionner le prof");
+          }
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
           for(int i=0;i<13;i++){
          temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
        }
-          String sql4="DELETE FROM 'infopersonnes' WHERE NOM='"+temtab[0]+"'";
-          System.out.println(sql4);
-      }catch(Exception ex){
-      System.out.println("n'est pas selectionee");
-      }
-    }//GEN-LAST:event_jButton2MouseClicked
+        Les_attestations att =new Les_attestations();
+        att.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,10 +209,7 @@ public class interProf extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
