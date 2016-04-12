@@ -12,6 +12,25 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URL;
+
+import java.text.SimpleDateFormat;
+
+
 public class Absence extends Attestations {
    private int id[]={1};
    private String piecesjustificatives[];
@@ -82,5 +101,147 @@ public class Absence extends Attestations {
             System.out.println("Veuillez verifier les donnee insert");
         }
    }
+             public void imagee(Document document)throws Exception{
+          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
+            Image image=Image.getInstance(imageUrl+"logo.png");
+            image.scaleAbsolute(224,70);
+            image.setAlignment(Image.MIDDLE);
+            document.add(image);
+            
+    }
+   public void autorisation_absence(String Nom,String Prenom,String Som,String NGrade,String service,String Raison_assence,String Adu,String Aau,String Apeice){
  
+       Document document = new Document(PageSize.A4);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("AUTORISATION ABSENCE de "+Nom+"1.pdf"));
+                document.open();
+          
+                imagee(document);
+           
+            document.open();
+            imagee(document);
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date now = new java.util.Date();
+            String tdnow = td.format(now);  
+            Paragraph pa = new Paragraph("AUTORISATION D’ABSENCE", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            pa.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(pa);
+            for(int i=0;i<4;i++){
+                document.add(new Paragraph(" "));
+            }
+//      cell = new PdfPCell(new Phrase("Fusion de 2 cellules de la première colonne"));
+//      cell.setRowspan(2);
+//      table.addCell(cell);
+      PdfPTable table = new PdfPTable(2);
+       PdfPCell cell=new PdfPCell();
+      //contenu du tableau.
+        table.addCell("\nNOM et Prénom :\n\n");
+        table.addCell("\n"+Nom+" "+Prenom+"\n");
+        table.addCell("\nSOM:\n\n");
+        table.addCell("\n"+Som+"\n");
+        table.addCell("\nGRADE :\n\n");
+        table.addCell("\n"+NGrade+"\n");
+        table.addCell("\nService:\n\n");
+        table.addCell("\n"+service+"\n");
+        table.addCell("\nARaison d’absence\n\n");
+        table.addCell("\n"+Raison_assence+"\n");
+     
+        table.addCell("\nPériode d’absence:\n\n");
+        table.addCell("DU:"+Adu+"\nAU:"+Aau+"\n");
+        table.addCell("\nPièces justificatives\n\n");
+        table.addCell("\n"+Apeice+"\n"); 
+         document.add(table);
+         Paragraph p = new Paragraph("\nSignature du demandeur", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            p.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(p);
+          for(int i=0;i<3;i++){
+                document.add(new Paragraph(" "));
+            }
+        
+         PdfPTable table2 = new PdfPTable(2);
+ 
+        table2.addCell("\nSecrétaire général\n\n");
+                table2.addCell("\nLe doyen\n\n");
+         table2.addCell("\n\n\n\n\n\n");
+         table2.addCell("\n\n\n\n\n\n");
+         document.add(table2);
+       
+        document.close();
+          Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("AUTORISATION ABSENCE de "+Nom+".pdf"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+            
+         }catch(Exception ex){
+         System.out.print("catch");
+         }
+ }
+    public void autorisation_absence2(String Nom,String Prenom,String Som,String NGrade,String service,String Raison_assence,String Adu,String Aau,String Apeice){
+
+ 
+       Document document = new Document(PageSize.A4);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("AUTORISATION ABSENCE de "+Nom+"2.pdf"));
+                document.open();
+           
+            imagee(document);
+           
+            document.open();
+            imagee(document);
+            SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date now = new java.util.Date();
+            String tdnow = td.format(now);  
+            Paragraph pa = new Paragraph("AUTORISATION D’ABSENCE", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
+            pa.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(pa);
+            for(int i=0;i<4;i++){
+                document.add(new Paragraph(" "));
+            }
+//      cell = new PdfPCell(new Phrase("Fusion de 2 cellules de la première colonne"));
+//      cell.setRowspan(2);
+//      table.addCell(cell);
+      PdfPTable table = new PdfPTable(2);
+       PdfPCell cell=new PdfPCell();
+      //contenu du tableau.
+        table.addCell("\nNOM et Prénom :\n\n");
+        table.addCell("\n"+Nom+" "+Prenom+"\n");
+        table.addCell("\nSOM:\n\n");
+        table.addCell("\n"+Som+"\n");
+        table.addCell("\nGRADE :\n\n");
+        table.addCell("\n"+NGrade+"\n");
+        table.addCell("\nService:\n\n");
+        table.addCell("\n"+service+"\n");
+        table.addCell("\nARaison d’absence\n\n");
+        table.addCell("\n"+Raison_assence+"\n");
+     
+        table.addCell("\nPériode d’absence:\n\n");
+        table.addCell("DU:"+Adu+"\nAU:"+Aau+"\n");
+        table.addCell("\nPièces justificatives\n\n");
+        table.addCell("\n"+Apeice+"\n"); 
+ 
+        document.add(table);
+         for(int i=0;i<2;i++){
+                document.add(new Paragraph(" "));
+            }
+         PdfPTable table2 = new PdfPTable(1);
+       table2.addCell("\n               •L’intéressé (é) est tenu d’aviser le service du personnel\n        de sa  reprise de travail après expiration d’autorisation d’absence.\n\n");
+       document.add(table2);
+            Paragraph par = new Paragraph("\n\nLe doyen", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+            par.setAlignment(Paragraph.ALIGN_CENTER);
+            document.add(par);
+        document.close();
+          Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("AUTORISATION ABSENCE de "+Nom+"2.pdf"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+         }catch(Exception ex){
+         System.out.print("catch");
+         }
+ 
+ }
+   
 }

@@ -17,6 +17,7 @@ public class INSERT {
             }
         }
         SQL += ")";
+             System.out.println(SQL);
         return SQL;
     }
                   //insertion au chemps specific
@@ -38,6 +39,7 @@ public class INSERT {
         }
 
         SQL += ")";
+        System.out.println(SQL);
         return SQL;
 
     }

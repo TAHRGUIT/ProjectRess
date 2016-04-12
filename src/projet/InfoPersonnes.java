@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 
 
+
 public class InfoPersonnes {
    
    private int id[]={2};
@@ -31,7 +32,7 @@ public class InfoPersonnes {
    
    protected String cadre[];
    
-   
+   protected String type[];
    //constructeurs
 
     public InfoPersonnes() {
@@ -47,6 +48,7 @@ public class InfoPersonnes {
         SELECT sn = new SELECT();
          Statement stmt2 = connect.con.createStatement();
         String SQL2 =sn.nbselect("infopersonnes");
+        
          ResultSet results2 = stmt2.executeQuery(SQL2);
         while(results2.next()) {
          m= results2.getInt("count(*)");
@@ -57,15 +59,20 @@ public class InfoPersonnes {
                     cin = new String[m];
                     grade = new String[m];
                     cadre = new String[m];
-             
+                     type = new String[m];
                       
-        String tab []={"NOM","PRENOM","SOM","CIN","GRADE","CADRE"};
-        String SQL = s.querySelect(tab, "infopersonnes");
+       // String tabl []={"NOM","PRENOM","SOM","CIN","GRADE","CADRE"};
+        String SQL = s.querySelectOrderd("infopersonnes","ID");
         ResultSet results = stmt.executeQuery(SQL);
                while(results.next()) {
        
                t= results.getString("NOM");
-               nom[i]=t;       
+                   System.out.println(results.getString("NOM"));
+               nom[i]=t;  
+               
+               t= results.getString("type");
+                   System.out.println(results.getString("type"));
+               type[i]=t; 
                
                t = results.getString("PRENOM");
                prenom[i]=t;
@@ -86,7 +93,7 @@ public class InfoPersonnes {
         } catch (Exception ex) {
             Logger.getLogger(InfoPersonnes.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+   
     }
      public String[] getNom(){
      return nom;
@@ -106,6 +113,10 @@ public class InfoPersonnes {
    public String[] getcadre (){
      return cadre;
      }
-     
-    
+   
+    public String[] gettype (){
+     return type;
+     }
+
+  
 }

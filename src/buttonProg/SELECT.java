@@ -10,6 +10,11 @@ public class SELECT {
         System.out.println(SQL);
         return SQL;
     }
+         public String querySelectOrderd(String nomTable,String id) {
+        SQL = "SELECT * FROM " + nomTable+" order by "+id;
+        System.out.println(SQL);
+        return SQL;
+    }
       public String querySelectAll(String nomTable, String etat) {
         SQL = "SELECT * FROM " + nomTable + " WHERE " + etat;
         return SQL;

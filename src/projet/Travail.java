@@ -108,7 +108,7 @@ public void attestation_travail_prof(String Nom,String Prenom,String Cin,String 
           
         Document document = new Document(PageSize.A4);
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("Attestation de travail Professeur.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("Attestation de travail Professeur "+Nom+".pdf"));
             
             document.open();
             imagee(document);
@@ -123,12 +123,13 @@ public void attestation_travail_prof(String Nom,String Prenom,String Cin,String 
             }
             
             Paragraph p = new Paragraph("   Je soussigné, Belahsen Youness, Doyen de la Faculté Polydisciplinaire de Ouarzazate  atteste que Monsieur:  \n" +
-"           - NOM         :"+Nom+"    	\n" +
-"           - PRENOM      :"+Prenom+"     \n" +
-"           - CIN         :"+Cin+"    \n" +
-"           - D.R.P.P     :"+Drpp+"   \n" +
+"           - NOM       :"+Nom+"     	\n" +
+"           - PRENOM    :"+Prenom+"     \n" +
+"           - CIN       :"+Cin+"    \n" +
+"           - D.R.P.P   :"+Drpp+"   \n" +
+"           - GRADE     :"+Grade+"   \n" +
 "           \n" +
-"Exerce la fonction d’administrateur 3 éme grade  au sein de notre établissement depuis le"+date_rec+".\n" +"\n"
+"Exerce la fonction d’enseignant chercheur au sein de notre établissement depuis le"+date_rec+".\n" +"\n"
 
                     + "      Cette attestation est délivrée à l’intéressé(e) pour servir et valoir ce que de droit.\n\n", FontFactory.getFont(FontFactory.TIMES, 16, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p);
@@ -148,7 +149,7 @@ public void attestation_travail_prof(String Nom,String Prenom,String Cin,String 
             /* Open Pdf */
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
-                desktop.open(new File("Attestation de travail Professeur.pdf"));
+                desktop.open(new File("Attestation de travail Professeur "+Nom+".pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
@@ -156,7 +157,7 @@ public void attestation_travail_prof(String Nom,String Prenom,String Cin,String 
              System.out.println("date");
         } catch (Exception ex) {
             
-        System.out.println("qsdqs");
+       System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
         }
     }
 }

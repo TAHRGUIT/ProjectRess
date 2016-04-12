@@ -9,23 +9,25 @@ import Connexion.Connection;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import Interface.after_auth;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.util.concurrent.ExecutionException;
+import javax.swing.JProgressBar;
 
 /**
  *
  * @author Y.T
  */
 public class Login1 extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login1
-     */
     public Login1() {
+        new Progre().setVisible(true);
         initComponents();
     }
 
@@ -60,7 +62,7 @@ public class Login1 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField2.setBackground(java.awt.SystemColor.controlHighlight);
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 20)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(102, 102, 102));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("Username");
@@ -86,10 +88,10 @@ public class Login1 extends javax.swing.JFrame {
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 260, 40));
 
         jPasswordField1.setBackground(java.awt.SystemColor.controlHighlight);
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jPasswordField1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(102, 102, 102));
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("lahyani");
+        jPasswordField1.setText("123456789");
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordField1FocusGained(evt);
@@ -110,7 +112,7 @@ public class Login1 extends javax.swing.JFrame {
         });
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 260, 40));
 
-        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(102, 102, 102));
         jButton1.setText("LOG IN");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,7 +126,7 @@ public class Login1 extends javax.swing.JFrame {
                 jButton1MouseReleased(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 130, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -163,10 +165,10 @@ public class Login1 extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 5, 20, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tekton Pro", 0, 60)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Loginico.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 160, 60));
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("GESTION DES RESSOURCES HUMAINES");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 310, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/FPO logo1.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, -1));
@@ -304,12 +306,12 @@ int x,y;
        
         ResultSet results = stmt.executeQuery(SQL);
          
+                
         if (results.next()) {
             registerUser(results.getString("id_user"));
-            if (results.getString("password").equals("lahyani")) {
-               after_auth fn = new after_auth();
-                System.out.println("qsfs");
-                        fn.setVisible(true);
+            
+            if (results.getString("password").equals("123456")) {
+                new after_auth().setVisible(true);
             }
             this.dispose();
         } else {
@@ -328,6 +330,11 @@ int x,y;
         }
         }
     
+        private void prgress(){
+       
+        }
+        
+        
     /**
      * @param args the command line arguments
      */

@@ -6,6 +6,7 @@
 package Interface;
 import Connexion.Connection;
 import buttonProg.INSERT;
+import java.awt.Toolkit;
 import java.sql.Statement;
 /**
  *
@@ -31,19 +32,6 @@ public class Ajouter_prof extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         nom = new javax.swing.JTextField();
         prenom = new javax.swing.JTextField();
         cin = new javax.swing.JTextField();
@@ -57,160 +45,291 @@ public class Ajouter_prof extends javax.swing.JFrame {
         cadre = new javax.swing.JTextField();
         echellon = new javax.swing.JTextField();
         Situation_admin = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Enregistrer");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(51, 51, 51));
+        jButton2.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Annuler");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
-        jLabel1.setText("Nom:");
+        nom.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        nom.setForeground(new java.awt.Color(102, 102, 102));
+        nom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nom.setText("Nom");
+        nom.setPreferredSize(new java.awt.Dimension(6, 25));
+        nom.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nomFocusLost(evt);
+            }
+        });
+        getContentPane().add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 200, 30));
 
-        jLabel2.setText("Prenom");
+        prenom.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        prenom.setForeground(new java.awt.Color(102, 102, 102));
+        prenom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        prenom.setText("Prenom");
+        prenom.setPreferredSize(new java.awt.Dimension(6, 25));
+        prenom.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                prenomMouseDragged(evt);
+            }
+        });
+        prenom.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                prenomFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                prenomFocusLost(evt);
+            }
+        });
+        getContentPane().add(prenom, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 200, 30));
 
-        jLabel3.setText("CIN");
+        cin.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        cin.setForeground(new java.awt.Color(102, 102, 102));
+        cin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cin.setText("CIN");
+        cin.setPreferredSize(new java.awt.Dimension(6, 25));
+        cin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cinFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cinFocusLost(evt);
+            }
+        });
+        getContentPane().add(cin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 200, 30));
 
-        jLabel4.setText("Lieu de naissance");
+        lieu_naissance.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        lieu_naissance.setForeground(new java.awt.Color(102, 102, 102));
+        lieu_naissance.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        lieu_naissance.setText("Lieu de Naissance");
+        lieu_naissance.setPreferredSize(new java.awt.Dimension(6, 25));
+        lieu_naissance.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lieu_naissanceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lieu_naissanceFocusLost(evt);
+            }
+        });
+        getContentPane().add(lieu_naissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 200, 30));
 
-        jLabel5.setText("Date de naissance");
+        date_de_naissance.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        date_de_naissance.setForeground(new java.awt.Color(102, 102, 102));
+        date_de_naissance.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        date_de_naissance.setText("Date de Naissance");
+        date_de_naissance.setPreferredSize(new java.awt.Dimension(6, 25));
+        date_de_naissance.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                date_de_naissanceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                date_de_naissanceFocusLost(evt);
+            }
+        });
+        getContentPane().add(date_de_naissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 200, 30));
 
-        jLabel6.setText("Situation Famillial ");
+        situation_famillial.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        situation_famillial.setForeground(new java.awt.Color(102, 102, 102));
+        situation_famillial.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        situation_famillial.setText("Situation Famillial");
+        situation_famillial.setPreferredSize(new java.awt.Dimension(6, 25));
+        situation_famillial.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                situation_famillialFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                situation_famillialFocusLost(evt);
+            }
+        });
+        getContentPane().add(situation_famillial, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 200, 30));
 
-        jLabel7.setText("Specialitee");
+        specialite.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        specialite.setForeground(new java.awt.Color(102, 102, 102));
+        specialite.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        specialite.setText("Specialitee");
+        specialite.setPreferredSize(new java.awt.Dimension(6, 25));
+        specialite.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                specialiteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                specialiteFocusLost(evt);
+            }
+        });
+        getContentPane().add(specialite, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 190, 30));
 
-        jLabel8.setText("Date recrutement");
+        date_recrutement.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        date_recrutement.setForeground(new java.awt.Color(102, 102, 102));
+        date_recrutement.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        date_recrutement.setText("Date recrutement");
+        date_recrutement.setPreferredSize(new java.awt.Dimension(6, 25));
+        date_recrutement.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                date_recrutementFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                date_recrutementFocusLost(evt);
+            }
+        });
+        getContentPane().add(date_recrutement, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 190, 30));
 
-        jLabel9.setText("Grade");
+        grade.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        grade.setForeground(new java.awt.Color(102, 102, 102));
+        grade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        grade.setText("Grade");
+        grade.setPreferredSize(new java.awt.Dimension(6, 25));
+        grade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                gradeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gradeFocusLost(evt);
+            }
+        });
+        getContentPane().add(grade, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 190, 30));
 
-        jLabel10.setText("Numero_Some");
+        somme.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        somme.setForeground(new java.awt.Color(102, 102, 102));
+        somme.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        somme.setText("Numero_Some");
+        somme.setPreferredSize(new java.awt.Dimension(6, 25));
+        somme.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                sommeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                sommeFocusLost(evt);
+            }
+        });
+        getContentPane().add(somme, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 190, 30));
 
-        jLabel11.setText("cadre");
+        cadre.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        cadre.setForeground(new java.awt.Color(102, 102, 102));
+        cadre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cadre.setText("Cadre");
+        cadre.setPreferredSize(new java.awt.Dimension(6, 25));
+        cadre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cadreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cadreFocusLost(evt);
+            }
+        });
+        getContentPane().add(cadre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 190, 30));
 
-        jLabel12.setText("Echellon");
+        echellon.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        echellon.setForeground(new java.awt.Color(102, 102, 102));
+        echellon.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        echellon.setText("Echellon");
+        echellon.setPreferredSize(new java.awt.Dimension(6, 25));
+        echellon.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                echellonFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                echellonFocusLost(evt);
+            }
+        });
+        getContentPane().add(echellon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 190, 30));
 
-        jLabel13.setText("Situation administrative");
+        Situation_admin.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        Situation_admin.setForeground(new java.awt.Color(102, 102, 102));
+        Situation_admin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Situation_admin.setText("Situation Administarive");
+        Situation_admin.setPreferredSize(new java.awt.Dimension(6, 25));
+        Situation_admin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Situation_adminFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Situation_adminFocusLost(evt);
+            }
+        });
+        getContentPane().add(Situation_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 250, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(jButton1)
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel13)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(situation_famillial)
-                                    .addComponent(date_de_naissance, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lieu_naissance, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cin, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(nom, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(prenom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(specialite)
-                                    .addComponent(date_recrutement)
-                                    .addComponent(grade)
-                                    .addComponent(somme)
-                                    .addComponent(cadre)
-                                    .addComponent(echellon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(Situation_admin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(specialite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lieu_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(date_de_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(situation_famillial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(59, 59, 59))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(date_recrutement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(somme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(echellon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Situation_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(31, 31, 31))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/FPO logo1_2.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 410, 90));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/min.png"))); // NOI18N
+        jLabel5.setToolTipText("Minimize");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 12, 20, 20));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/exi1.png"))); // NOI18N
+        jLabel4.setToolTipText("Close");
+        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 20, 20));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login1.png"))); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(300, 200));
+        jLabel15.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel15MouseDragged(evt);
+            }
+        });
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel15MousePressed(evt);
+            }
+        });
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,17 +342,20 @@ public class Ajouter_prof extends javax.swing.JFrame {
         connect = new Connection();
         Statement stmt = connect.con.createStatement();
   if(!nom.getText().isEmpty() && !nom.getText().isEmpty() && !prenom.getText().isEmpty() && !somme.getText().isEmpty()&& !cin.getText().isEmpty() && !grade.getText().isEmpty() && !cadre.getText().isEmpty() && !lieu_naissance.getText().isEmpty() && !date_de_naissance.getText().isEmpty() && !situation_famillial.getText().isEmpty() && !date_recrutement.getText().isEmpty() && !echellon.getText().isEmpty() && !specialite.getText().isEmpty() && !Situation_admin.getText().isEmpty()){
-     String infoPresonnes[]={nom.getText(),prenom.getText(), somme.getText(), cin.getText(), grade.getText(),cadre.getText()};
-      String infoPersonnels[]={lieu_naissance.getText(),date_de_naissance.getText(),situation_famillial.getText(), date_recrutement.getText(), echellon.getText(), specialite.getText(), Situation_admin.getText()};
-      String AJoutePersonne[]={"NOM","PRENOM","SOM","CIN","GRADE","CADRE"};
-     String AJoutePersonnels[]={"LIEU_DE_NAISSANCE","DATE_NAISSANCE","SITUATION_FAMILIALE","DATE_RECRUTMENT","ECHELON","SEPCIALITE","SITUATION_ADMINISTRATIVE"};
+     String infoPresonnes[]={nom.getText(),prenom.getText(), somme.getText(), cin.getText(), grade.getText(),cadre.getText(),"prof"};
+      String infoPersonnels[]={lieu_naissance.getText(),date_de_naissance.getText(),situation_famillial.getText(), date_recrutement.getText(), echellon.getText(), specialite.getText(), Situation_admin.getText(),"prof"};
+      String AJoutePersonne[]={"NOM","PRENOM","SOM","CIN","GRADE","CADRE","type"};
+     String AJoutePersonnels[]={"LIEU_DE_NAISSANCE","DATE_NAISSANCE","SITUATION_FAMILIALE","DATE_RECRUTMENT","ECHELON","SEPCIALITE","SITUATION_ADMINISTRATIVE","type"};
                   //
           INSERT in=new INSERT();
     String SQL=in.queryInsert("infopersonnes", AJoutePersonne, infoPresonnes);
-   stmt.executeUpdate(SQL);
+ 
      String SQL2=in.queryInsert("infopersonnels", AJoutePersonnels, infoPersonnels);
+       stmt.executeUpdate(SQL);
    stmt.executeUpdate(SQL2);
        System.out.print("c fais");
+       infoPersonnels=null;
+       infoPresonnes=null;
  } 
   else{
  System.out.print("veuillez entrer tous les informations pour contunier");
@@ -241,7 +363,180 @@ public class Ajouter_prof extends javax.swing.JFrame {
  }catch(Exception ex){
           System.out.print("Ereur");
       }
+      interProf ip = new interProf();
+      ip.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        interProf ip = new interProf();
+        ip.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 260, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
+    }//GEN-LAST:event_formWindowOpened
+int x,y;
+    private void jLabel15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MousePressed
+  x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jLabel15MousePressed
+
+    private void jLabel15MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseDragged
+       this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);
+    }//GEN-LAST:event_jLabel15MouseDragged
+
+    private void nomFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomFocusGained
+        if(nom.getText().equalsIgnoreCase("Nom"))
+            nom.setText(null);
+    }//GEN-LAST:event_nomFocusGained
+
+    private void nomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomFocusLost
+       if(nom.getText().isEmpty())
+        nom.setText("Nom");
+  
+    }//GEN-LAST:event_nomFocusLost
+
+    private void prenomMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prenomMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prenomMouseDragged
+
+    private void prenomFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prenomFocusGained
+       if(prenom.getText().equalsIgnoreCase("Prenom"))
+            prenom.setText(null);
+    }//GEN-LAST:event_prenomFocusGained
+
+    private void prenomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prenomFocusLost
+        if(prenom.getText().isEmpty())
+        prenom.setText("Prenom");
+    }//GEN-LAST:event_prenomFocusLost
+
+    private void cinFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cinFocusGained
+           if(cin.getText().equalsIgnoreCase("CIN"))
+            cin.setText(null);
+    }//GEN-LAST:event_cinFocusGained
+
+    private void cinFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cinFocusLost
+        if(cin.getText().isEmpty())
+        cin.setText("CIN");
+    }//GEN-LAST:event_cinFocusLost
+
+    private void lieu_naissanceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lieu_naissanceFocusGained
+        if(lieu_naissance.getText().equalsIgnoreCase("Lieu de Naissance"))
+            lieu_naissance.setText(null);
+    }//GEN-LAST:event_lieu_naissanceFocusGained
+
+    private void lieu_naissanceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lieu_naissanceFocusLost
+         if(lieu_naissance.getText().isEmpty())
+        lieu_naissance.setText("Lieu de Naissance");
+    }//GEN-LAST:event_lieu_naissanceFocusLost
+
+    private void date_de_naissanceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_de_naissanceFocusGained
+     if(date_de_naissance.getText().equalsIgnoreCase("Date de Naissance"))
+            date_de_naissance.setText(null);
+    }//GEN-LAST:event_date_de_naissanceFocusGained
+
+    private void date_de_naissanceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_de_naissanceFocusLost
+     if(date_de_naissance.getText().isEmpty())
+        date_de_naissance.setText("Date de Naissance");
+    }//GEN-LAST:event_date_de_naissanceFocusLost
+
+    private void situation_famillialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_situation_famillialFocusGained
+    if(situation_famillial.getText().equalsIgnoreCase("Situation Famillial"))
+            situation_famillial.setText(null);
+    }//GEN-LAST:event_situation_famillialFocusGained
+
+    private void situation_famillialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_situation_famillialFocusLost
+          if(situation_famillial.getText().isEmpty())
+        situation_famillial.setText("Situation Famillial");
+    }//GEN-LAST:event_situation_famillialFocusLost
+
+    private void specialiteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_specialiteFocusGained
+    if(specialite.getText().equalsIgnoreCase("Specialitee"))
+            specialite.setText(null);
+    }//GEN-LAST:event_specialiteFocusGained
+
+    private void specialiteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_specialiteFocusLost
+        if(specialite.getText().isEmpty())
+        specialite.setText("Specialitee");
+    }//GEN-LAST:event_specialiteFocusLost
+
+    private void date_recrutementFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_recrutementFocusGained
+    if(date_recrutement.getText().equalsIgnoreCase("Date Recrutement"))
+            date_recrutement.setText(null);
+    }//GEN-LAST:event_date_recrutementFocusGained
+
+    private void date_recrutementFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_recrutementFocusLost
+        if(date_recrutement.getText().isEmpty())
+        date_recrutement.setText("Date Recrutement");
+    }//GEN-LAST:event_date_recrutementFocusLost
+
+    private void gradeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gradeFocusGained
+    if(grade.getText().equalsIgnoreCase("Grade"))
+            grade.setText(null);
+    }//GEN-LAST:event_gradeFocusGained
+
+    private void gradeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gradeFocusLost
+        if(grade.getText().isEmpty())
+        grade.setText("Grade");
+    }//GEN-LAST:event_gradeFocusLost
+
+    private void sommeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sommeFocusGained
+       if(somme.getText().equalsIgnoreCase("Numero_Some"))
+            somme.setText(null);
+    }//GEN-LAST:event_sommeFocusGained
+
+    private void sommeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sommeFocusLost
+         if(somme.getText().isEmpty())
+        somme.setText("Numero_Some");
+    }//GEN-LAST:event_sommeFocusLost
+
+    private void echellonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_echellonFocusGained
+     if(echellon.getText().equalsIgnoreCase("Echellon"))
+            echellon.setText(null);
+    }//GEN-LAST:event_echellonFocusGained
+
+    private void echellonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_echellonFocusLost
+      if(echellon.getText().isEmpty())
+        echellon.setText("Echellon");
+    }//GEN-LAST:event_echellonFocusLost
+
+    private void cadreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cadreFocusGained
+        if(cadre.getText().equalsIgnoreCase("Cadre"))
+            cadre.setText(null);
+    }//GEN-LAST:event_cadreFocusGained
+
+    private void cadreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cadreFocusLost
+        if(cadre.getText().isEmpty())
+        cadre.setText("Cadre");
+    }//GEN-LAST:event_cadreFocusLost
+
+    private void Situation_adminFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Situation_adminFocusGained
+        if(Situation_admin.getText().equalsIgnoreCase("Situation Administarive"))
+            Situation_admin.setText(null);
+    }//GEN-LAST:event_Situation_adminFocusGained
+
+    private void Situation_adminFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Situation_adminFocusLost
+        if(Situation_admin.getText().isEmpty())
+        Situation_admin.setText("Situation Administarive");
+    }//GEN-LAST:event_Situation_adminFocusLost
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MousePressed
 
     /**
      * @param args the command line arguments
@@ -288,19 +583,10 @@ public class Ajouter_prof extends javax.swing.JFrame {
     private javax.swing.JTextField grade;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField lieu_naissance;
     private javax.swing.JTextField nom;
     private javax.swing.JTextField prenom;

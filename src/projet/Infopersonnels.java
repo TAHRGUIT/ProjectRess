@@ -41,6 +41,10 @@ public class Infopersonnels extends InfoPersonnes {
    public String sex[];
    
    public String SEPCIALITE[];
+   
+   public String type[]; 
+   
+   public String Date_affectation[];
     public Infopersonnels(){
         super();
           int i=0;
@@ -54,8 +58,9 @@ public class Infopersonnels extends InfoPersonnes {
         
         SELECT s = new SELECT();
       
-        String tab []={"SEX","NOMAR","PRENOMAR","DATE_NAISSANCE","LIEU_DE_NAiSSANCE","SITUATION_FAMILIALE","SITUATION_ADMINISTRATIVE","DATE_RECRUTMENT","ECHELLE","ECHELON","SEPCIALITE"};
-        String SQL = s.querySelect(tab, "infopersonnels");
+       // String tab []={"SEX","NOMAR","PRENOMAR","DATE_NAISSANCE","LIEU_DE_NAiSSANCE","SITUATION_FAMILIALE","SITUATION_ADMINISTRATIVE","DATE_RECRUTMENT","ECHELLE","ECHELON","SEPCIALITE"};
+        String SQL = s.querySelectOrderd("infopersonnels","ID");
+     
         ResultSet results = stmt.executeQuery(SQL);
         
         SELECT sn = new SELECT();
@@ -77,21 +82,29 @@ public class Infopersonnels extends InfoPersonnes {
                       prenomar=new String[m];
                       situationAdministrative=new String[m];
                       SEPCIALITE=new String[m];
-  
+                        type =new String[m];
+                        Date_affectation =new String[m];
+                                String str;
+
                while(results.next()) {
           
                
                t= results.getString("SEX");
-               sex[i]=t;       
-             
-              t = results.getString("NOMAR");
-              nomar[i]=t;
+               sex[i]=t;      
+               
+           t=results.getString("NOMAR");
+               //t = new String(.getBytes(), "UTF-8");
+                nomar[i]=t;
               
-               t= results.getString("PRENOMAR");
+              //  new String(.getBytes(), "UTF-8");
+                 t= results.getString("PRENOMAR");
               prenomar[i]=t;       
                 
                 t=results.getString("DATE_NAISSANCE");
                datedenaissance[i]=t;
+               
+               t=results.getString("type");
+               type[i]=t;
                 
                 t= results.getString("LIEU_DE_NAiSSANCE");
                lieudenaissance[i]=t;       
@@ -114,6 +127,8 @@ public class Infopersonnels extends InfoPersonnes {
                 t = results.getString("SEPCIALITE");
                SEPCIALITE[i]=t;
                   
+               t = results.getString("Date_affectation");
+               Date_affectation[i]=t;
                 
         i++;   
                 
@@ -126,8 +141,8 @@ public class Infopersonnels extends InfoPersonnes {
        
     }
     public static void main(String[] args) {
-        Infopersonnels s = new Infopersonnels();
-   
+        Infopersonnels fnn= new Infopersonnels();
+       
     }
-      
+
 }
