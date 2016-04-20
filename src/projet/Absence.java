@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.net.URL;
 
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 
 public class Absence extends Attestations {
@@ -98,18 +99,17 @@ public class Absence extends Attestations {
                }
     }
         catch(Exception e){
-            System.out.println("Veuillez verifier les donnee insert");
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee","Erreur",JOptionPane.CLOSED_OPTION);
         }
    }
              public void imagee(Document document)throws Exception{
-          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
-            Image image=Image.getInstance(imageUrl+"logo.png");
+            Image image=Image.getInstance("logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
             document.add(image);
             
     }
-   public void autorisation_absence(String Nom,String Prenom,String Som,String NGrade,String service,String Raison_assence,String Adu,String Aau,String Apeice){
+   public void autorisation_absence(String Nom,String Prenom,String Som,String NGrade,String service,String Raison_assence,String Adu,String Aau,String Apeice,String url){
  
        Document document = new Document(PageSize.A4);
         try {
@@ -160,30 +160,30 @@ public class Absence extends Attestations {
         
          PdfPTable table2 = new PdfPTable(2);
  
-        table2.addCell("\nSecrétaire général\n\n");
+        table2.addCell("\nChef de departement / Secrétaire général :\n\n");
                 table2.addCell("\nLe doyen\n\n");
          table2.addCell("\n\n\n\n\n\n");
          table2.addCell("\n\n\n\n\n\n");
          document.add(table2);
-       
-        document.close();
-          Desktop desktop = Desktop.getDesktop();
+        Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
-                desktop.open(new File("AUTORISATION ABSENCE de "+Nom+".pdf"));
+                desktop.open(new File("AUTORISATION ABSENCE de "+Nom+"1.pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
-            
+            document.close();
+     
+    
          }catch(Exception ex){
-         System.out.print("catch");
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
          }
  }
-    public void autorisation_absence2(String Nom,String Prenom,String Som,String NGrade,String service,String Raison_assence,String Adu,String Aau,String Apeice){
+    public void autorisation_absence2(String Nom,String Prenom,String Som,String NGrade,String service,String Raison_assence,String Adu,String Aau,String Apeice,String url){
 
  
        Document document = new Document(PageSize.A4);
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("AUTORISATION ABSENCE de "+Nom+"2.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(url+"/AUTORISATION ABSENCE de "+Nom+"2.pdf"));
                 document.open();
            
             imagee(document);
@@ -222,24 +222,38 @@ public class Absence extends Attestations {
         table.addCell("\n"+Apeice+"\n"); 
  
         document.add(table);
-         for(int i=0;i<2;i++){
+        
                 document.add(new Paragraph(" "));
-            }
+          
          PdfPTable table2 = new PdfPTable(1);
        table2.addCell("\n               •L’intéressé (é) est tenu d’aviser le service du personnel\n        de sa  reprise de travail après expiration d’autorisation d’absence.\n\n");
        document.add(table2);
-            Paragraph par = new Paragraph("\n\nLe doyen", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
-            par.setAlignment(Paragraph.ALIGN_CENTER);
-            document.add(par);
-        document.close();
-          Desktop desktop = Desktop.getDesktop();
+                       document.add(new Paragraph(" "));
+
+          PdfPTable table3 = new PdfPTable(2);
+       PdfPCell cell3=new PdfPCell();
+      //contenu du tableau.
+      cell3 = new PdfPCell(new Phrase("                                                    Signature :"));
+      cell3.setColspan(2);
+      table3.addCell(cell3);
+        table3.addCell("\nChef de departement/Secrétaire général:\n\n");
+        table3.addCell("\nDoyen\n");
+        table3.addCell("\n\n\n\n\n\n\n\n\n");
+        table3.addCell("\n\n\n\n\n\n\n\n\n");
+            document.add(table3);
+       
+       
+       
+  Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
                 desktop.open(new File("AUTORISATION ABSENCE de "+Nom+"2.pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
+            document.close();    
          }catch(Exception ex){
-         System.out.print("catch");
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
+
          }
  
  }

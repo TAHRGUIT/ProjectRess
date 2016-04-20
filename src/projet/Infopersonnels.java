@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class Infopersonnels extends InfoPersonnes {
@@ -45,6 +46,16 @@ public class Infopersonnels extends InfoPersonnes {
    public String type[]; 
    
    public String Date_affectation[];
+   
+   public String universsitee[];
+   
+   public String departement[];
+   
+   public String diplome[];
+   
+   public String specialitee[];
+   
+   public String fonct_exrc[];
     public Infopersonnels(){
         super();
           int i=0;
@@ -84,6 +95,12 @@ public class Infopersonnels extends InfoPersonnes {
                       SEPCIALITE=new String[m];
                         type =new String[m];
                         Date_affectation =new String[m];
+                        
+                          universsitee=new String[m];
+                         departement=new String[m];
+                            diplome=new String[m];
+                            specialitee=new String[m];
+                            fonct_exrc=new String[m];
                                 String str;
 
                while(results.next()) {
@@ -129,6 +146,21 @@ public class Infopersonnels extends InfoPersonnes {
                   
                t = results.getString("Date_affectation");
                Date_affectation[i]=t;
+               
+               t = results.getString("UNIVRESITEE");
+               universsitee[i]=t;
+               
+                t = results.getString("DEPARTEMENT");
+               departement[i]=t;
+               
+                t = results.getString("DIPLOME");
+               diplome[i]=t;
+               
+                t = results.getString("SPECIALITEE");
+               specialitee[i]=t;
+               
+               t = results.getString("FONCT_EXERC");
+               fonct_exrc[i]=t;
                 
         i++;   
                 
@@ -136,13 +168,10 @@ public class Infopersonnels extends InfoPersonnes {
            
         }
         } catch (Exception ex) {
-            Logger.getLogger(InfoPersonnes.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee","Erreur",JOptionPane.CLOSED_OPTION);
         }
        
     }
-    public static void main(String[] args) {
-        Infopersonnels fnn= new Infopersonnels();
-       
-    }
+
 
 }

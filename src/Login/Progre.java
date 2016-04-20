@@ -35,7 +35,7 @@ public class Progre extends javax.swing.JFrame {
                    jProgressBar1.setValue(jProgressBar1.getValue()+1);
                }
                 else{
-                   System.exit(0);
+                 //  System.exit(0);
                }
             }
         });

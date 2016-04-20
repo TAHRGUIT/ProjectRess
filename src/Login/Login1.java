@@ -27,8 +27,8 @@ import javax.swing.JProgressBar;
  */
 public class Login1 extends javax.swing.JFrame {
     public Login1() {
-        new Progre().setVisible(true);
         initComponents();
+       // new Progre().setVisible(true);
     }
 
     /**
@@ -66,7 +66,7 @@ public class Login1 extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(102, 102, 102));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("Username");
-        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField2FocusLost(evt);
@@ -137,7 +137,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/min.png"))); // NOI18N
         jLabel5.setToolTipText("Minimize");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -151,7 +151,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/exi1.png"))); // NOI18N
         jLabel4.setToolTipText("Close");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -244,8 +244,7 @@ public class Login1 extends javax.swing.JFrame {
                 login();
             } catch (SQLException | ClassNotFoundException ex) {
                 jLabel6.setVisible(true);
-                jLabel6.setText("Ereeur2");
-            }
+                jLabel6.setText("Ereur De Connection A la Base De Donnee");            }
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
@@ -256,7 +255,7 @@ public class Login1 extends javax.swing.JFrame {
 
         } catch (SQLException | ClassNotFoundException ex) {
             jLabel6.setVisible(true);
-            jLabel6.setText("Ereur1");
+            jLabel6.setText("Ereur De Connection A la Base De Donnee");
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -302,37 +301,28 @@ int x,y;
         Connection connect = new Connection();
         Statement stmt = connect.con.createStatement();
         
-        String SQL = "SELECT * FROM user where name ='" + jTextField2.getText() + "' and password = '" + jPasswordField1.getText() + "'";
-       
+        String SQL = "SELECT * FROM user ";
         ResultSet results = stmt.executeQuery(SQL);
          
                 
-        if (results.next()) {
-            registerUser(results.getString("id_user"));
+        while (results.next()) {
+            //registerUser(results.getString("id_user"));
             
-            if (results.getString("password").equals("123456")) {
-                new after_auth().setVisible(true);
+            if (results.getString("password").equals(jPasswordField1.getText()) && results.getString("name").equals(jTextField2.getText()) ) {
+                after_auth at=new after_auth();
+                at.setVisible(true);
+                dispose();
+                System.out.println("lool");
+                this.dispose();
             }
-            this.dispose();
-        } else {
+            else {
             jLabel6.setVisible(true);
             jLabel6.setText("Invalid Username or password");
         }
+           
+        } 
     }
-        private void registerUser(String id) {
-        try {
-            FileWriter fw = new FileWriter("user.txt");
-            PrintWriter pw = new PrintWriter(fw);
-            pw.print(id);
-            pw.close();
-        } catch (IOException ex) {
-            System.out.println("Error");
-        }
-        }
-    
-        private void prgress(){
-       
-        }
+
         
         
     /**

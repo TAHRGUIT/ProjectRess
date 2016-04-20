@@ -9,6 +9,7 @@ import Connexion.Connection;
 import buttonProg.INSERT;
 import java.awt.Toolkit;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,6 +52,32 @@ public class Ajouter_emp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        foncrion_excerce = new javax.swing.JTextField();
+        lieu_naissance = new javax.swing.JTextField();
+        situat_admin = new javax.swing.JTextField();
+        diplome = new javax.swing.JTextField();
+        specialitee = new javax.swing.JTextField();
+        univers_etb = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,7 +93,6 @@ public class Ajouter_emp extends javax.swing.JFrame {
         nom.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         nom.setForeground(new java.awt.Color(102, 102, 102));
         nom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        nom.setText("Nom");
         nom.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nomFocusGained(evt);
@@ -90,7 +116,6 @@ public class Ajouter_emp extends javax.swing.JFrame {
         prenom.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         prenom.setForeground(new java.awt.Color(102, 102, 102));
         prenom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        prenom.setText("Prenom");
         prenom.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 prenomFocusGained(evt);
@@ -99,12 +124,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 prenomFocusLost(evt);
             }
         });
-        getContentPane().add(prenom, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 200, -1));
+        getContentPane().add(prenom, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 200, -1));
 
         nomar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         nomar.setForeground(new java.awt.Color(102, 102, 102));
         nomar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        nomar.setText("الاسم الشخصي");
         nomar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nomarFocusGained(evt);
@@ -113,12 +137,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 nomarFocusLost(evt);
             }
         });
-        getContentPane().add(nomar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 200, -1));
+        getContentPane().add(nomar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 200, -1));
 
         prenomar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         prenomar.setForeground(new java.awt.Color(102, 102, 102));
         prenomar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        prenomar.setText("الاسم العائلي");
         prenomar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 prenomarFocusGained(evt);
@@ -127,12 +150,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 prenomarFocusLost(evt);
             }
         });
-        getContentPane().add(prenomar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 200, -1));
+        getContentPane().add(prenomar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 200, -1));
 
         sex.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         sex.setForeground(new java.awt.Color(102, 102, 102));
         sex.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sex.setText("Sex");
         sex.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 sexFocusGained(evt);
@@ -141,12 +163,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 sexFocusLost(evt);
             }
         });
-        getContentPane().add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 200, -1));
+        getContentPane().add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 200, -1));
 
         cin.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         cin.setForeground(new java.awt.Color(102, 102, 102));
         cin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        cin.setText("Cin");
         cin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cinFocusGained(evt);
@@ -155,12 +176,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 cinFocusLost(evt);
             }
         });
-        getContentPane().add(cin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 200, -1));
+        getContentPane().add(cin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 200, -1));
 
         date_recrutement.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         date_recrutement.setForeground(new java.awt.Color(102, 102, 102));
         date_recrutement.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        date_recrutement.setText("Date Recrutement");
         date_recrutement.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 date_recrutementFocusGained(evt);
@@ -169,12 +189,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 date_recrutementFocusLost(evt);
             }
         });
-        getContentPane().add(date_recrutement, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 200, -1));
+        getContentPane().add(date_recrutement, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 200, -1));
 
         date_de_naissance.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         date_de_naissance.setForeground(new java.awt.Color(102, 102, 102));
         date_de_naissance.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        date_de_naissance.setText("Date de Naissance");
         date_de_naissance.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 date_de_naissanceFocusGained(evt);
@@ -193,7 +212,6 @@ public class Ajouter_emp extends javax.swing.JFrame {
         situation_famillial.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         situation_famillial.setForeground(new java.awt.Color(102, 102, 102));
         situation_famillial.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        situation_famillial.setText("Situation Familial");
         situation_famillial.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 situation_famillialFocusGained(evt);
@@ -202,12 +220,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 situation_famillialFocusLost(evt);
             }
         });
-        getContentPane().add(situation_famillial, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 200, -1));
+        getContentPane().add(situation_famillial, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 200, -1));
 
         Date_affectation.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         Date_affectation.setForeground(new java.awt.Color(102, 102, 102));
         Date_affectation.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Date_affectation.setText("Date d'affectation");
         Date_affectation.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 Date_affectationFocusGained(evt);
@@ -216,12 +233,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 Date_affectationFocusLost(evt);
             }
         });
-        getContentPane().add(Date_affectation, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 200, -1));
+        getContentPane().add(Date_affectation, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 200, -1));
 
         grade.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         grade.setForeground(new java.awt.Color(102, 102, 102));
         grade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        grade.setText("Grade");
         grade.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 gradeFocusGained(evt);
@@ -230,12 +246,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 gradeFocusLost(evt);
             }
         });
-        getContentPane().add(grade, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 200, -1));
+        getContentPane().add(grade, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 200, -1));
 
         echellon.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         echellon.setForeground(new java.awt.Color(102, 102, 102));
         echellon.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        echellon.setText("Echellon");
         echellon.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 echellonFocusGained(evt);
@@ -244,12 +259,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 echellonFocusLost(evt);
             }
         });
-        getContentPane().add(echellon, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 200, -1));
+        getContentPane().add(echellon, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 200, -1));
 
         echelle.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         echelle.setForeground(new java.awt.Color(102, 102, 102));
         echelle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        echelle.setText("Echelle");
         echelle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 echelleFocusGained(evt);
@@ -258,12 +272,11 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 echelleFocusLost(evt);
             }
         });
-        getContentPane().add(echelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 200, -1));
+        getContentPane().add(echelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 200, -1));
 
         som.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         som.setForeground(new java.awt.Color(102, 102, 102));
         som.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        som.setText("Numero_Som");
         som.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 somFocusGained(evt);
@@ -272,7 +285,7 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 somFocusLost(evt);
             }
         });
-        getContentPane().add(som, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 200, -1));
+        getContentPane().add(som, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 200, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
@@ -283,7 +296,7 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
@@ -294,23 +307,23 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 85, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, 85, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/FPO logo1_2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 410, 90));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 410, 90));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/min.png"))); // NOI18N
         jLabel14.setToolTipText("Minimize");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 12, 20, 20));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 22, 20, 20));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(204, 204, 204));
@@ -318,7 +331,7 @@ public class Ajouter_emp extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/exi1.png"))); // NOI18N
         jLabel15.setToolTipText("Close");
         jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel15MouseClicked(evt);
@@ -330,10 +343,245 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 jLabel15MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 20, 20));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 20, 20));
 
-        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login1.png"))); // NOI18N
+        foncrion_excerce.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        foncrion_excerce.setForeground(new java.awt.Color(102, 102, 102));
+        foncrion_excerce.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        foncrion_excerce.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                foncrion_excerceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                foncrion_excerceFocusLost(evt);
+            }
+        });
+        foncrion_excerce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foncrion_excerceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(foncrion_excerce, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 200, -1));
+
+        lieu_naissance.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        lieu_naissance.setForeground(new java.awt.Color(102, 102, 102));
+        lieu_naissance.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        lieu_naissance.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lieu_naissanceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lieu_naissanceFocusLost(evt);
+            }
+        });
+        lieu_naissance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lieu_naissanceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(lieu_naissance, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 200, -1));
+
+        situat_admin.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        situat_admin.setForeground(new java.awt.Color(102, 102, 102));
+        situat_admin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        situat_admin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                situat_adminFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                situat_adminFocusLost(evt);
+            }
+        });
+        situat_admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                situat_adminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(situat_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, 200, -1));
+
+        diplome.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        diplome.setForeground(new java.awt.Color(102, 102, 102));
+        diplome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        diplome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                diplomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                diplomeFocusLost(evt);
+            }
+        });
+        diplome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diplomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(diplome, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 200, -1));
+
+        specialitee.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        specialitee.setForeground(new java.awt.Color(102, 102, 102));
+        specialitee.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        specialitee.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                specialiteeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                specialiteeFocusLost(evt);
+            }
+        });
+        specialitee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                specialiteeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(specialitee, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 200, -1));
+
+        univers_etb.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        univers_etb.setForeground(new java.awt.Color(102, 102, 102));
+        univers_etb.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        univers_etb.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                univers_etbFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                univers_etbFocusLost(evt);
+            }
+        });
+        univers_etb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                univers_etbActionPerformed(evt);
+            }
+        });
+        getContentPane().add(univers_etb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 200, -1));
+
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Date de Naissance");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 170, -1));
+
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Diplome");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 200, -1));
+
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Prenom");
+        jLabel5.setToolTipText("");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 140, -1));
+
+        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Situation Familial");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 170, -1));
+
+        jLabel7.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Specialitee");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 200, -1));
+
+        jLabel8.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Nom");
+        jLabel8.setToolTipText("");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 140, -1));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("الاسم العائلي");
+        jLabel9.setToolTipText("");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 140, -1));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("الاسم الشخصي");
+        jLabel10.setToolTipText("");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 140, -1));
+
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Date affectation");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 170, -1));
+
+        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Grade");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 170, -1));
+
+        jLabel13.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Fonction excerce");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 200, -1));
+
+        jLabel16.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Universitee - etab -diplomante");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 200, -1));
+
+        jLabel17.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("CIN");
+        jLabel17.setToolTipText("");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 140, -1));
+
+        jLabel18.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("SEXE");
+        jLabel18.setToolTipText("");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 140, -1));
+
+        jLabel19.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Echellon");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 170, -1));
+
+        jLabel20.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Echelle");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 170, -1));
+
+        jLabel21.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Situation Administrative");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 170, -1));
+
+        jLabel22.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Date Recrutement");
+        jLabel22.setToolTipText("");
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 140, -1));
+
+        jLabel23.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Lieu Naissance");
+        jLabel23.setToolTipText("");
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 140, -1));
+
+        jLabel24.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Numero_Som");
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 170, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login_ajou.png"))); // NOI18N
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);
@@ -344,7 +592,7 @@ public class Ajouter_emp extends javax.swing.JFrame {
                 jLabel1MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 460));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -363,177 +611,118 @@ public class Ajouter_emp extends javax.swing.JFrame {
       try{  
         connect = new Connection();
         Statement stmt = connect.con.createStatement();
-  if(!nom.getText().isEmpty() && !prenom.getText().isEmpty() && !nomar.getText().isEmpty() && !sex.getText().isEmpty() && !cin.getText().isEmpty() && !date_de_naissance.getText().isEmpty() && !situation_famillial.getText().isEmpty() && !date_recrutement.getText().isEmpty() && !Date_affectation.getText().isEmpty() && !grade.getText().isEmpty() && !echelle.getText().isEmpty() && !echellon.getText().isEmpty() && !som.getText().isEmpty()){
-     String infoPresonnes[]={nom.getText(),prenom.getText(), cin.getText(), grade.getText(), som.getText(),"emp"};
-     String infoPersonnels[]={nomar.getText(),prenomar.getText(),sex.getText(),date_de_naissance.getText(),situation_famillial.getText(), date_recrutement.getText(),Date_affectation.getText(),echelle.getText(),echellon.getText(),"emp"};
-      String AJoutePersonne[]={"NOM","PRENOM","CIN","GRADE","SOM","type"};
-     String AJoutePersonnels[]={"NOMAR","PRENOMAR","SEX","DATE_NAISSANCE","SITUATION_FAMILIALE","DATE_RECRUTMENT","Date_affectation","ECHELLE","ECHELON","type"};
+  if(!nom.getText().isEmpty() && !prenom.getText().isEmpty() && !nomar.getText().isEmpty() && !sex.getText().isEmpty() && !cin.getText().isEmpty() && !date_de_naissance.getText().isEmpty() && !lieu_naissance.getText().isEmpty() && !situation_famillial.getText().isEmpty() && !situat_admin.getText().isEmpty() && !date_recrutement.getText().isEmpty() && !Date_affectation.getText().isEmpty() && !grade.getText().isEmpty() && !echelle.getText().isEmpty() && !echellon.getText().isEmpty() && !som.getText().isEmpty() && !diplome.getText().isEmpty() && !specialitee.getText().isEmpty() && !univers_etb.getText().isEmpty() && !foncrion_excerce.getText().isEmpty()){
+    String infoPresonnes[]={nom.getText(),prenom.getText(), cin.getText(), grade.getText(), som.getText(),"emp"};
+     String infoPersonnels[]={nomar.getText(),prenomar.getText(),sex.getText(),date_de_naissance.getText(),lieu_naissance.getText(),situation_famillial.getText(),situat_admin.getText(),date_recrutement.getText(),Date_affectation.getText(),echelle.getText(),echellon.getText(),diplome.getText(),specialitee.getText(),univers_etb.getText(),foncrion_excerce.getText(),"emp"};
+    String AJoutePersonne[]={"NOM","PRENOM","CIN","GRADE","SOM","type"};
+     String AJoutePersonnels[]={"NOMAR","PRENOMAR","SEX","DATE_NAISSANCE","LIEU_DE_NAISSANCE","SITUATION_FAMILIALE","SITUATION_ADMINISTRATIVE","DATE_RECRUTMENT","Date_affectation","ECHELLE","ECHELON","DIPLOME","SPECIALITEE","UNIVRESITEE","FONCT_EXERC","type"};
                   
           INSERT in=new INSERT();
-   String SQL=in.queryInsert("infopersonnes", AJoutePersonne, infoPresonnes);
+  String SQL=in.queryInsert("infopersonnes", AJoutePersonne, infoPresonnes);
  
      String SQL2=in.queryInsert("infopersonnels", AJoutePersonnels, infoPersonnels);
       stmt.executeUpdate(SQL);
-  stmt.executeUpdate(SQL2);
-       System.out.print("c fais");
+ stmt.executeUpdate(SQL2);
        //infoPersonnels=null;
        //infoPresonnes=null;
+ new interemploi().setVisible(true);
+    this.dispose();
  } 
   else{
- System.out.print("veuillez entrer tous les informations pour contunier");
+            JOptionPane.showConfirmDialog(null," Vérifier que tous les champs sont bien remplis","Erreur",JOptionPane.CLOSED_OPTION);
   }
  }catch(Exception ex){
-          System.out.print("Ereur");
+       JOptionPane.showConfirmDialog(null," vérifier Votre Base de Donnee","Erreur",JOptionPane.CLOSED_OPTION);
       }
-      
-    new interemploi().setVisible(true);
-    this.dispose();
     
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void nomFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomFocusGained
- if(nom.getText().equalsIgnoreCase("Nom"))
-            nom.setText(null);
+
     }//GEN-LAST:event_nomFocusGained
 
     private void nomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomFocusLost
-        if(nom.getText().isEmpty())
-        nom.setText("Nom");
     }//GEN-LAST:event_nomFocusLost
 
     private void nomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomMouseClicked
-       if(nom.getText().equalsIgnoreCase("Nom"))
-            nom.setText(null);
     }//GEN-LAST:event_nomMouseClicked
 
     private void prenomFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prenomFocusGained
-         if(prenom.getText().equalsIgnoreCase("Prenom"))
-            prenom.setText(null);
     }//GEN-LAST:event_prenomFocusGained
 
     private void prenomFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prenomFocusLost
-            if(prenom.getText().isEmpty())
-               prenom.setText("Prenom");
     }//GEN-LAST:event_prenomFocusLost
 
     private void nomarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomarFocusGained
-          if(nomar.getText().equalsIgnoreCase("الاسم الشخصي"))
-            nomar.setText(null);
     }//GEN-LAST:event_nomarFocusGained
 
     private void nomarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomarFocusLost
-            if(nomar.getText().isEmpty())
-               nomar.setText("الاسم الشخصي");
     }//GEN-LAST:event_nomarFocusLost
 
     private void prenomarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prenomarFocusGained
-        if(prenomar.getText().equalsIgnoreCase("الاسم العائلي"))
-            prenomar.setText(null);
     }//GEN-LAST:event_prenomarFocusGained
 
     private void prenomarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prenomarFocusLost
-        if(prenomar.getText().isEmpty())
-               prenomar.setText("الاسم العائلي");
     }//GEN-LAST:event_prenomarFocusLost
 
     private void sexFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sexFocusGained
-        if(sex.getText().equalsIgnoreCase("Sex"))
-            sex.setText(null);
     }//GEN-LAST:event_sexFocusGained
 
     private void sexFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sexFocusLost
-        if(sex.getText().isEmpty())
-              sex.setText("Sex");
     }//GEN-LAST:event_sexFocusLost
 
     private void cinFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cinFocusGained
-         if(cin.getText().equalsIgnoreCase("Cin"))
-            cin.setText(null);
     }//GEN-LAST:event_cinFocusGained
 
     private void cinFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cinFocusLost
-         if(cin.getText().isEmpty())
-              cin.setText("Cin");
     }//GEN-LAST:event_cinFocusLost
 
     private void date_recrutementFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_recrutementFocusGained
-        if(date_recrutement.getText().equalsIgnoreCase("Date Recrutement"))
-            date_recrutement.setText(null);
     }//GEN-LAST:event_date_recrutementFocusGained
 
     private void date_recrutementFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_recrutementFocusLost
-       if(date_recrutement.getText().isEmpty())
-              date_recrutement.setText("Date Recrutement");
     }//GEN-LAST:event_date_recrutementFocusLost
 
     private void date_de_naissanceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_de_naissanceFocusGained
-         if(date_de_naissance.getText().equalsIgnoreCase("Date de Naissance"))
-            date_de_naissance.setText(null);
     }//GEN-LAST:event_date_de_naissanceFocusGained
 
     private void date_de_naissanceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_date_de_naissanceFocusLost
-        if(date_de_naissance.getText().isEmpty())
-              date_de_naissance.setText("Date de Naissance");
     }//GEN-LAST:event_date_de_naissanceFocusLost
 
     private void situation_famillialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_situation_famillialFocusGained
-       if(situation_famillial.getText().equalsIgnoreCase("Situation Familial"))
-            situation_famillial.setText(null);
     }//GEN-LAST:event_situation_famillialFocusGained
 
     private void situation_famillialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_situation_famillialFocusLost
-       if(situation_famillial.getText().isEmpty())
-              situation_famillial.setText("Situation Familial");
     }//GEN-LAST:event_situation_famillialFocusLost
 
     private void Date_affectationFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Date_affectationFocusGained
-          if(Date_affectation.getText().equalsIgnoreCase("Date d'affectation"))
-            Date_affectation.setText(null);
     }//GEN-LAST:event_Date_affectationFocusGained
 
     private void Date_affectationFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Date_affectationFocusLost
-      if(Date_affectation.getText().isEmpty())
-              Date_affectation.setText("Date d'affectation");
     }//GEN-LAST:event_Date_affectationFocusLost
 
     private void gradeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gradeFocusGained
-       if(grade.getText().equalsIgnoreCase("Grade"))
-            grade.setText(null);
     }//GEN-LAST:event_gradeFocusGained
 
     private void gradeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_gradeFocusLost
-        if(grade.getText().isEmpty())
-              grade.setText("Grade");
     }//GEN-LAST:event_gradeFocusLost
 
     private void echellonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_echellonFocusGained
-         if(echellon.getText().equalsIgnoreCase("Echellon"))
-            echellon.setText(null);
     }//GEN-LAST:event_echellonFocusGained
 
     private void echellonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_echellonFocusLost
-         if(echellon.getText().isEmpty())
-              echellon.setText("Echellon");
     }//GEN-LAST:event_echellonFocusLost
 
     private void echelleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_echelleFocusGained
-         if(echelle.getText().equalsIgnoreCase("Echelle"))
-            echelle.setText(null);
     }//GEN-LAST:event_echelleFocusGained
 
     private void echelleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_echelleFocusLost
-    if(echelle.getText().isEmpty())
-              echelle.setText("Echelle");
     }//GEN-LAST:event_echelleFocusLost
 
     private void somFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_somFocusGained
-         if(som.getText().equalsIgnoreCase("Numero_Som"))
-            som.setText(null);
     }//GEN-LAST:event_somFocusGained
 
     private void somFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_somFocusLost
-           if(som.getText().isEmpty())
-              som.setText("Numero_Som");
     }//GEN-LAST:event_somFocusLost
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -559,17 +748,89 @@ public class Ajouter_emp extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel15MousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 290, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
+        this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 370, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
     }//GEN-LAST:event_formWindowOpened
         int x,y;   
-    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
-        this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);
-    }//GEN-LAST:event_jLabel1MouseDragged
+    private void foncrion_excerceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foncrion_excerceFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foncrion_excerceFocusGained
+
+    private void foncrion_excerceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foncrion_excerceFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foncrion_excerceFocusLost
+
+    private void foncrion_excerceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foncrion_excerceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foncrion_excerceActionPerformed
+
+    private void lieu_naissanceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lieu_naissanceFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lieu_naissanceFocusGained
+
+    private void lieu_naissanceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lieu_naissanceFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lieu_naissanceFocusLost
+
+    private void lieu_naissanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lieu_naissanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lieu_naissanceActionPerformed
+
+    private void situat_adminFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_situat_adminFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_situat_adminFocusGained
+
+    private void situat_adminFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_situat_adminFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_situat_adminFocusLost
+
+    private void situat_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_situat_adminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_situat_adminActionPerformed
+
+    private void diplomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diplomeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_diplomeFocusGained
+
+    private void diplomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diplomeFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_diplomeFocusLost
+
+    private void diplomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diplomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_diplomeActionPerformed
+
+    private void specialiteeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_specialiteeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specialiteeFocusGained
+
+    private void specialiteeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_specialiteeFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specialiteeFocusLost
+
+    private void specialiteeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specialiteeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specialiteeActionPerformed
+
+    private void univers_etbFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_univers_etbFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_univers_etbFocusGained
+
+    private void univers_etbFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_univers_etbFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_univers_etbFocusLost
+
+    private void univers_etbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_univers_etbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_univers_etbActionPerformed
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        x = evt.getX();
-        y = evt.getY();
+       x = evt.getX();
+       y = evt.getY();
     }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -611,21 +872,47 @@ public class Ajouter_emp extends javax.swing.JFrame {
     private javax.swing.JTextField cin;
     private javax.swing.JTextField date_de_naissance;
     private javax.swing.JTextField date_recrutement;
+    private javax.swing.JTextField diplome;
     private javax.swing.JTextField echelle;
     private javax.swing.JTextField echellon;
+    private javax.swing.JTextField foncrion_excerce;
     private javax.swing.JTextField grade;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField lieu_naissance;
     private javax.swing.JTextField nom;
     private javax.swing.JTextField nomar;
     private javax.swing.JTextField prenom;
     private javax.swing.JTextField prenomar;
     private javax.swing.JTextField sex;
+    private javax.swing.JTextField situat_admin;
     private javax.swing.JTextField situation_famillial;
     private javax.swing.JTextField som;
+    private javax.swing.JTextField specialitee;
+    private javax.swing.JTextField univers_etb;
     // End of variables declaration//GEN-END:variables
 }

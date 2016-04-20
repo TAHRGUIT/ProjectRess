@@ -36,7 +36,7 @@ public class after_auth extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -50,7 +50,6 @@ public class after_auth extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 400));
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -125,19 +124,18 @@ public class after_auth extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/FPO logo1_2.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 390, 80));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login1.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login1.png"))); // NOI18N
+        jLabel7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jLabel1MouseDragged(evt);
+                jLabel7MouseDragged(evt);
             }
         });
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
+                jLabel7MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,16 +176,6 @@ public class after_auth extends javax.swing.JFrame {
                       this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 300, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
     }//GEN-LAST:event_formWindowOpened
 int x,y;
-    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
-  this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);
-    }//GEN-LAST:event_jLabel1MouseDragged
-
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-       x = evt.getX();
-        y = evt.getY(); 
-        
-    }//GEN-LAST:event_jLabel1MousePressed
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         interemploi ie = new interemploi();
         ie.setVisible(true);
@@ -199,6 +187,15 @@ int x,y;
         ip.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+        x = evt.getX();
+       y = evt.getY();
+    }//GEN-LAST:event_jLabel7MousePressed
+
+    private void jLabel7MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseDragged
+this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseDragged
 
     /**
      * @param args the command line arguments
@@ -236,12 +233,12 @@ int x,y;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }

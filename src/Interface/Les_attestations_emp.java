@@ -6,6 +6,8 @@
 package Interface;
 
 import java.awt.Toolkit;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import projet.Absence;
 import projet.CongeCongeExceptionnel;
 import projet.International;
@@ -39,8 +41,6 @@ public class Les_attestations_emp extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        drpp = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -56,7 +56,7 @@ public class Les_attestations_emp extends javax.swing.JFrame {
         au = new javax.swing.JTextField();
         motif = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        avi = new javax.swing.JComboBox<String>();
+        avi = new javax.swing.JComboBox<>();
         jButton9 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -86,7 +86,7 @@ public class Les_attestations_emp extends javax.swing.JFrame {
         du_mission = new javax.swing.JTextField();
         au_mission = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        transport = new javax.swing.JComboBox<String>();
+        transport = new javax.swing.JComboBox<>();
         autre_lbl = new javax.swing.JLabel();
         autre = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
@@ -136,12 +136,6 @@ public class Les_attestations_emp extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("D.R.P.P");
-
-        drpp.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-
         jButton10.setBackground(new java.awt.Color(51, 51, 51));
         jButton10.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,38 +152,28 @@ public class Les_attestations_emp extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(drpp, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton10)
-                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(199, 199, 199)
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 208, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton10)
+                        .addGap(136, 136, 136))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(drpp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(143, 143, 143)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                    .addComponent(jButton1)
+                    .addComponent(jButton10))
+                .addGap(155, 155, 155))
         );
 
         jTabbedPane1.addTab("Attestation De Travail", jPanel1);
@@ -251,7 +235,7 @@ public class Les_attestations_emp extends javax.swing.JFrame {
         });
 
         avi.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        avi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Favorable", "Défavorable" }));
+        avi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Favorable", "Défavorable" }));
 
         jButton9.setBackground(new java.awt.Color(51, 51, 51));
         jButton9.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
@@ -556,7 +540,7 @@ public class Les_attestations_emp extends javax.swing.JFrame {
         });
 
         transport.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        transport.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Train", "Avion", "Véhicule de service", "Autre", " " }));
+        transport.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Train", "Avion", "Véhicule de service", "Autre", " " }));
         transport.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 transportItemStateChanged(evt);
@@ -800,17 +784,16 @@ public class Les_attestations_emp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-    
-        Travail t =new Travail();
-         String Drpp=drpp.getText();
-         if(!Drpp.isEmpty()){
-         t.attestation_travail_prof(interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[5], Drpp, interemploi.temtab[10], interemploi.temtab[8]);
 
-        }
-         else{
-         System.out.print("Veuillez entrer le DRPP ");
-         }
+      //  if(!address.getText().isEmpty() && !affec.getText().isEmpty() && !du.getText().isEmpty() && !au.getText().isEmpty() && !motif.getText().isEmpty()){
+     //   International intern =new International();
+     // intern.quitter_territoire(interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[12], address.getText(), affec.getText(), du.getText(), au.getText(), motif.getText(), avi.getSelectedItem().toString(),url);
+       // }
+     
+           Travail tr =new Travail();
+           tr.attestation_travail_prof(interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[5],interemploi.temtab[15] , interemploi.temtab[12], interemploi.temtab[10], "yo");
+       JOptionPane.showConfirmDialog(null,"Le Pdf Est Bien Enregistrer","Enregistrer",JOptionPane.CLOSED_OPTION);
+
     
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -819,36 +802,49 @@ public class Les_attestations_emp extends javax.swing.JFrame {
     }//GEN-LAST:event_affecActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-     if(!address.getText().isEmpty() && !affec.getText().isEmpty() && !du.getText().isEmpty() && !au.getText().isEmpty() && !motif.getText().isEmpty()){
+
+        if(!address.getText().isEmpty() && !affec.getText().isEmpty() && !du.getText().isEmpty() && !au.getText().isEmpty() && !motif.getText().isEmpty()){
         International intern =new International();
-      intern.quitter_territoire(interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[10], address.getText(), affec.getText(), du.getText(), au.getText(), motif.getText(), avi.getSelectedItem().toString());
-     }
+      intern.quitter_territoire(interProf.temtab[0], interProf.temtab[1], interProf.temtab[12], address.getText(), affec.getText(), du.getText(), au.getText(), motif.getText(), avi.getSelectedItem().toString(),"");
+     // intern.quitter_territoire(Nom, Prenom, Grade, Adress_perso, Affectation, Du, Au, Motif, Avis_de_chef, url);
+           JOptionPane.showConfirmDialog(null,"Le Pdf Est Bien Enregistrer","Enregistrer",JOptionPane.CLOSED_OPTION);
+
+        }
      else{
-        System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+          JOptionPane.showConfirmDialog(null,"Entrer tous les informations pour Continuer","Attention",JOptionPane.CLOSED_OPTION);
      }
+      
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+  
         if(!duree.getText().isEmpty() && !peiode.getText().isEmpty()){
         CongeCongeExceptionnel intern =new CongeCongeExceptionnel();
-      intern.conje(duree.getText(), interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[5], interemploi.temtab[10], peiode.getText());  
-      
+      intern.conje(duree.getText(), interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[5], interemploi.temtab[12], peiode.getText(),"");  
+  //intern.conje(duree, Nom, Prenom, Cin, Grade, Peride, url);
+        JOptionPane.showConfirmDialog(null,"Le Pdf Est Bien Enregistrer","Enregistrer",JOptionPane.CLOSED_OPTION);
+
         }
    
         else{
-        System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+          JOptionPane.showConfirmDialog(null,"Entrer tous les informations pour Continuer","Attention",JOptionPane.CLOSED_OPTION);
      }
+        
+      
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-              if(!dure.getText().isEmpty() && !peiod.getText().isEmpty()){
+   
+        if(!dure.getText().isEmpty() && !peiod.getText().isEmpty()){
         CongeCongeExceptionnel inter =new CongeCongeExceptionnel();
-      inter.conje_exp(dure.getText(), interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[5], interemploi.temtab[10], peiod.getText());   
-       
+      inter.conje_exp(dure.getText(), interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[5], interemploi.temtab[12], peiod.getText(),"");   
+            JOptionPane.showConfirmDialog(null,"Le Pdf Est Bien Enregistrer","Enregistrer",JOptionPane.CLOSED_OPTION);
+
               }
      else{
-        System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+          JOptionPane.showConfirmDialog(null,"Entrer tous les informations pour Continuer","Attention",JOptionPane.CLOSED_OPTION);
      }
+      
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void objetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objetActionPerformed
@@ -856,17 +852,21 @@ public class Les_attestations_emp extends javax.swing.JFrame {
     }//GEN-LAST:event_objetActionPerformed
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-if(!mission_a.getText().isEmpty() && !objet.getText().isEmpty() && !du_mission.getText().isEmpty() && !au_mission.getText().isEmpty()){
+    
+        if(!mission_a.getText().isEmpty() && !objet.getText().isEmpty() && !du_mission.getText().isEmpty() && !au_mission.getText().isEmpty()){
     
     OrdreDeMission order=new OrdreDeMission();
     String moy=transport.getSelectedItem().toString();   
-    order.ordre_mission(interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[10], mission_a.getText(), objet.getText(), moy, du_mission.getText(), au_mission.getText(), autre.getText());
+    order.ordre_mission(interemploi.temtab[0], interemploi.temtab[1], interemploi.temtab[12], mission_a.getText(), objet.getText(), moy, du_mission.getText(), au_mission.getText(), autre.getText(),"");
     // order.ordre_mission(Nom, Prenom, Grade, mission_a, Objet, Moyen_tr, du, au, autre);
+      JOptionPane.showConfirmDialog(null,"Le Pdf Est Bien Enregistrer","Enregistrer",JOptionPane.CLOSED_OPTION);
 
 }
  else{
-        System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+          JOptionPane.showConfirmDialog(null,"Entrer tous les informations pour Continuer","Attention",JOptionPane.CLOSED_OPTION);
      }
+        
+       
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void transportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_transportItemStateChanged
@@ -881,15 +881,18 @@ if(!mission_a.getText().isEmpty() && !objet.getText().isEmpty() && !du_mission.g
     }//GEN-LAST:event_transportItemStateChanged
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-if(!service.getText().isEmpty() && !raison.getText().isEmpty() && !du_A.getText().isEmpty() && !AU_A.getText().isEmpty() && !piece_justi.getText().isEmpty()){    
+   
+        if(!service.getText().isEmpty() && !raison.getText().isEmpty() && !du_A.getText().isEmpty() && !AU_A.getText().isEmpty() && !piece_justi.getText().isEmpty()){    
     Absence abs=new Absence();   
-abs.autorisation_absence(interemploi.temtab[0], interemploi.temtab[1],interemploi.temtab[13],interemploi.temtab[10] ,service.getText() , raison.getText(), du_A.getText(), AU_A.getText(), piece_justi.getText());
-abs.autorisation_absence2(interemploi.temtab[0], interemploi.temtab[1],interemploi.temtab[13],interemploi.temtab[10] ,service.getText() , raison.getText(), du_A.getText(), AU_A.getText(), piece_justi.getText());
-//abs.autorisation_absence(Nom, Prenom, Som, NGrade, service, Raison_assence, Adu, Aau, Apeice);
-}
+abs.autorisation_absence(interemploi.temtab[0], interemploi.temtab[1],interemploi.temtab[15],interemploi.temtab[12] ,service.getText() , raison.getText(), du_A.getText(), AU_A.getText(), piece_justi.getText(),"");
+abs.autorisation_absence2(interemploi.temtab[0], interemploi.temtab[1],interemploi.temtab[15],interemploi.temtab[12] ,service.getText() , raison.getText(), du_A.getText(), AU_A.getText(), piece_justi.getText(),"");
+              JOptionPane.showConfirmDialog(null,"Le Pdf Est Bien Enregistrer","Enregistrer",JOptionPane.CLOSED_OPTION);
+
+        }
  else{
-        System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+          JOptionPane.showConfirmDialog(null,"Entrer tous les informations pour Continuer","Attention",JOptionPane.CLOSED_OPTION);
      }
+      
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
@@ -988,7 +991,6 @@ int x,y;
     private javax.swing.JTextField autre;
     private javax.swing.JLabel autre_lbl;
     private javax.swing.JComboBox<String> avi;
-    private javax.swing.JTextField drpp;
     private javax.swing.JTextField du;
     private javax.swing.JTextField du_A;
     private javax.swing.JTextField du_mission;
@@ -1006,7 +1008,6 @@ int x,y;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

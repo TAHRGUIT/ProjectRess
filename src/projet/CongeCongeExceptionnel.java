@@ -14,6 +14,9 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -23,6 +26,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 
 public class CongeCongeExceptionnel extends Attestations {
@@ -78,21 +82,20 @@ i++;
                }
     }
         catch(Exception e){
-            System.out.println("ghjk");
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee","Erreur",JOptionPane.CLOSED_OPTION);
         }
    }
      public void imagee(Document document)throws Exception{
-          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
-            Image image=Image.getInstance(imageUrl+"logo.png");
+            Image image=Image.getInstance("logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
             document.add(image);
             
     }
-public void conje(String duree,String Nom,String Prenom,String Cin,String Grade,String Peride) {
+public void conje(String duree,String Nom,String Prenom,String Cin,String Grade,String Peride,String url) {
         Document document = new Document(PageSize.A4);
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("conjee de "+Nom+".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("conjee  de "+Nom+".pdf"));
             
             document.open();
             imagee(document);
@@ -102,9 +105,9 @@ public void conje(String duree,String Nom,String Prenom,String Cin,String Grade,
             Paragraph pa = new Paragraph("Décision de congé", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
             pa.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(pa);
-            for(int i=0;i<4;i++){
+          
                 document.add(new Paragraph(" "));
-            }
+            
             
             Paragraph p = new Paragraph("Le Doyen de la Faculté  Polydisciplinaire Ouarzazate :\n" +
             "- Vu le Dahir  n°1.58.008 du 04 chaâbane 1377 (24 février 1958) portant statut général de la fonction publique tel qu’il a été modifié et complété.\n" +
@@ -129,36 +132,42 @@ public void conje(String duree,String Nom,String Prenom,String Cin,String Grade,
             document.add(p8);
             Paragraph p9 = new Paragraph("L’intéressé(e) est tenu d’aviser le service du personnel de sa reprise de travail après expiration du  congé sus-visé.", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p9);
-            for(int i=0;i<4;i++){
+         
                 document.add(new Paragraph(" "));
-            }
             
-            Paragraph time = new Paragraph("             Cachet et signature                                        Fait à Ouarzazate le :"+tdnow+"\n"+"\n",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+            
+            Paragraph time = new Paragraph("                                                                Fait à Ouarzazate le :"+tdnow+"\n"+"\n",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
         
             
-            Paragraph si = new Paragraph("Signature du demandeur",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
             time.setAlignment(Paragraph.ALIGN_LEFT);
-            si.setAlignment(Paragraph.ALIGN_RIGHT);
             document.add(time);
-            document.add(si);
-            document.close();
-            
-             System.out.println("date2");
-            /* Open Pdf */
+                         PdfPTable table = new PdfPTable(2);
+       PdfPCell cell=new PdfPCell();
+      //contenu du tableau.
+      cell = new PdfPCell(new Phrase("                                                    Signature :"));
+      cell.setColspan(2);
+      table.addCell(cell);
+        table.addCell("\nChef de departement / Secrétaire général :\n\n");
+        table.addCell("\nDoyen\n");
+        table.addCell("\n\n\n\n\n\n\n\n");
+        table.addCell("\n\n\n\n\n\n\n\n");
+            document.add(table);
+     /* Open Pdf */
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
-                desktop.open(new File("conjee de "+Nom+".pdf"));
+                desktop.open(new File("conjee  de "+Nom+".pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
-             
-             System.out.println("date");
+            document.close();
+            
+
         } catch (Exception ex) {
             
-        System.out.println("qsdqs");
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
         }
     }
- public void conje_exp(String duree,String Nom,String Prenom,String Cin,String Grade,String Peride) {
+ public void conje_exp(String duree,String Nom,String Prenom,String Cin,String Grade,String Peride,String url) {
         Document document = new Document(PageSize.A4);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("conge Exceptionnel "+Nom+".pdf"));
@@ -170,9 +179,9 @@ public void conje(String duree,String Nom,String Prenom,String Cin,String Grade,
             Paragraph pa = new Paragraph("Décision de congé", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
             pa.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(pa);
-            for(int i=0;i<4;i++){
+           
                 document.add(new Paragraph(" "));
-            }
+            
            
             Paragraph p = new Paragraph("Le Doyen de la Faculté  Polydisciplinaire Ouarzazate :\n" +
             "- Vu le Dahir  n°1.58.008 du 04 chaâbane 1377 (24 février 1958) portant statut général de la fonction publique tel qu’il a été modifié et complété.\n" +
@@ -198,32 +207,43 @@ public void conje(String duree,String Nom,String Prenom,String Cin,String Grade,
             document.add(p8);
             Paragraph p9 = new Paragraph("L’intéressé(e) est tenu d’aviser le service du personnel de sa reprise de travail après expiration du  congé sus-visé.", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
             document.add(p9);
-            for(int i=0;i<4;i++){
+            for(int i=0;i<2;i++){
                 document.add(new Paragraph(" "));
             }
             
-            Paragraph time = new Paragraph("             Cachet et signature                                        Fait à Ouarzazate le :"+tdnow+"\n"+"\n",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
+            Paragraph time = new Paragraph("                                                     Fait à Ouarzazate le :"+tdnow+"\n"+"\n",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
         
             
-            Paragraph si = new Paragraph("Signature du demandeur",FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
             time.setAlignment(Paragraph.ALIGN_LEFT);
-            si.setAlignment(Paragraph.ALIGN_RIGHT);
+           
             
             document.add(time);
-            document.add(si);
-             
-            document.close();
-            /* Open Pdf */
+            
+                document.add(new Paragraph(" "));
+            
+             PdfPTable table = new PdfPTable(2);
+       PdfPCell cell=new PdfPCell();
+      //contenu du tableau.
+      cell = new PdfPCell(new Phrase("                                                    Signature :"));
+      cell.setColspan(2);
+      table.addCell(cell);
+        table.addCell("\nChef de departement / Secrétaire général :\n\n");
+        table.addCell("\nDoyen\n");
+        table.addCell("\n\n\n\n\n\n\n");
+        table.addCell("\n\n\n\n\n\n\n");
+            document.add(table);
+     /* Open Pdf */
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
                 desktop.open(new File("conge Exceptionnel "+Nom+".pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
-             
+            document.close();
+     
         } catch (Exception ex) {
             
-        System.out.println("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
         }
     }  
    }

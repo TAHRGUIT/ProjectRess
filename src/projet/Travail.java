@@ -13,6 +13,9 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -22,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Travail extends Attestations {
    private int id[]={1};
@@ -92,26 +96,27 @@ public class Travail extends Attestations {
                }
     }
         catch(Exception e){
-            System.out.println("ghjk");
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee","Erreur",JOptionPane.CLOSED_OPTION);
         }
     }
         public void imagee(Document document)throws Exception{
-          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
-          System.out.println(imageUrl);
-            Image image=Image.getInstance(imageUrl+"logo.png");
+       
+            Image image=Image.getInstance("logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
             document.add(image);
             
     }
-public void attestation_travail_prof(String Nom,String Prenom,String Cin,String Drpp,String Grade,String date_rec) {
+public void attestation_travail_prof(String Nom,String Prenom,String Cin,String Drpp,String Grade,String date_rec,String url) {
           
         Document document = new Document(PageSize.A4);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("Attestation de travail Professeur "+Nom+".pdf"));
-            
-            document.open();
+                        document.open();
+
+
             imagee(document);
+
             SimpleDateFormat td = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date now = new java.util.Date();
             String tdnow = td.format(now);  
@@ -136,28 +141,38 @@ public void attestation_travail_prof(String Nom,String Prenom,String Cin,String 
             
             Paragraph time = new Paragraph("                Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
             Paragraph a = new Paragraph("");
-            Paragraph si = new Paragraph("                 Signature:",FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
 
             time.setAlignment(Paragraph.ALIGN_CENTER);
-            si.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(time);
-            document.add(si);
             document.add(a);
-            document.close();
-            
-             System.out.println("date2");
-            /* Open Pdf */
+             for(int i=0;i<3;i++){
+                document.add(new Paragraph(" "));
+            }
+             PdfPTable table = new PdfPTable(2);
+       PdfPCell cell=new PdfPCell();
+      //contenu du tableau.
+      cell = new PdfPCell(new Phrase("                                                    Signature :"));
+      cell.setColspan(2);
+      table.addCell(cell);
+        table.addCell("\nChef de departement / Secrétaire général :\n\n");
+        table.addCell("\nDoyen\n");
+        table.addCell("\n\n\n\n\n\n\n\n\n");
+        table.addCell("\n\n\n\n\n\n\n\n\n");
+            document.add(table);
+     /* Open Pdf */
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
                 desktop.open(new File("Attestation de travail Professeur "+Nom+".pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
-             
-             System.out.println("date");
+            document.close();
+
+           
         } catch (Exception ex) {
             
-       System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
         }
     }
+
 }

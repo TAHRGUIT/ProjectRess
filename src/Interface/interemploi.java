@@ -6,12 +6,25 @@
 package Interface;
 
 import Connexion.Connection;
+import java.awt.Desktop;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Statement;
+import java.util.Set;
+import java.util.TreeMap;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import projet.InfoPersonnes;
 import projet.Infopersonnels;
 
@@ -20,7 +33,7 @@ import projet.Infopersonnels;
  * @author mounir
  */
 public class interemploi extends javax.swing.JFrame {
- static String temtab[]= new String[14];
+ static String temtab[]= new String[20];
       DefaultTableModel mod;
             public void filter(String s){
           TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(mod);
@@ -28,6 +41,61 @@ public class interemploi extends javax.swing.JFrame {
           
           tr.setRowFilter(RowFilter.regexFilter(s));
       }
+             private String getvlue(int x,int y){
+return mod.getValueAt(x, y).toString();
+
+}
+    private void writetoxel(){
+
+ 
+XSSFWorkbook wb=new XSSFWorkbook();
+XSSFSheet ws=wb.createSheet();
+
+TreeMap<String,Object[]> data =new TreeMap<>();
+data.put("0" ,new Object[]{mod.getColumnName(0), mod.getColumnName(1),mod.getColumnName(2),mod.getColumnName(3),mod.getColumnName(4),mod.getColumnName(5),mod.getColumnName(6),mod.getColumnName(7),mod.getColumnName(8),mod.getColumnName(9),mod.getColumnName(10),mod.getColumnName(11),mod.getColumnName(12),mod.getColumnName(13),mod.getColumnName(14),mod.getColumnName(15),mod.getColumnName(16),mod.getColumnName(17),mod.getColumnName(18),mod.getColumnName(19)});
+int nb=mod.getRowCount();
+int s=0;
+for(int i=1;i<=nb;i++){
+data.put(Integer.toString(i), new Object[]{getvlue(s,0),getvlue(s,1),getvlue(s,2),getvlue(s,3),getvlue(s,4),getvlue(s,5),getvlue(s,6),getvlue(s,7),getvlue(s,8),getvlue(s,9),getvlue(s,10),getvlue(s,11),getvlue(s,12),getvlue(s,13),getvlue(s,14),getvlue(s,15),getvlue(s,16),getvlue(s,17),getvlue(s,18),getvlue(s,19)});
+
+s++;
+}
+Set<String> ids=data.keySet();
+XSSFRow row;
+int rowID=0;
+for(String key : ids){
+row=ws.createRow(rowID++);
+
+Object[] values=data.get(key);
+int cellID=0;
+for( Object o: values){
+    Cell cell=row.createCell(cellID++);
+    cell.setCellValue(o.toString());
+}
+}
+
+try{
+FileOutputStream fs;
+    
+        fs = new FileOutputStream(new File("bdd_Fonctionaire.xlsx"));
+         wb.write(fs);
+        fs.close();
+               JOptionPane.showConfirmDialog(null,"Votre Base De Donnee Est Bien Expoter","Valider",JOptionPane.CLOSED_OPTION);
+  Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.OPEN)) {
+                desktop.open(new File("bdd_Fonctionaire.xlsx"));
+            } else {
+                System.out.println("Open is not supported");
+            }
+} catch (FileNotFoundException ex) {
+    System.out.println("eruer fichier"); 
+    } catch (IOException ex) {
+    System.out.println("eruer fichier"); 
+    }
+
+
+ }
+
     public interemploi() {
         initComponents();
          try {
@@ -38,11 +106,9 @@ public class interemploi extends javax.swing.JFrame {
       
         for(int i=0;i<s.sex.length;i++){
       if(emp.equals(s.type[i]))
-      mod.addRow(new Object[]{l.getNom()[i],l.getPrenom()[i],s.nomar[i],s.prenomar[i],s.sex[i],l.getCin()[i],s.datedenaissance[i],s.situationfamiliale[i],s.daterecrutement[i],s.Date_affectation[i],l.getGrade()[i],s.echelle[i],s.echelon[i],l.getSom()[i]});
+      mod.addRow(new Object[]{l.getNom()[i],l.getPrenom()[i],s.nomar[i],s.prenomar[i],s.sex[i],l.getCin()[i],s.datedenaissance[i],s.lieudenaissance[i],s.situationfamiliale[i],s.situationAdministrative[i],s.daterecrutement[i],s.Date_affectation[i],l.getGrade()[i],s.echelle[i],s.echelon[i],l.getSom()[i],s.diplome[i],s.specialitee[i],s.universsitee[i],s.fonct_exrc[i]});
         
-      }
-
-            
+      }     
         } catch (Exception ex) {
            System.out.print("verifier les donnees ...");
         }   
@@ -69,6 +135,7 @@ public class interemploi extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        ajout1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,12 +153,12 @@ public class interemploi extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nom", "Prenom", "الاسم الشخصي", "الاسم العائلي", "Sex", "Cin", "Date Naissance", "Situation Familiall", "Date recrutement", "Date d'affectation", "Grade", "Echelle", "Echellon", "Som"
+                "Nom", "Prenom", "الاسم الشخصي", "الاسم العائلي", "Sex", "Cin", "Date Naissance", "Lieu Naissance", "Situation Familiall", "Situation Admin", "Date recrutement", "Date d'affectation", "Grade", "Echelle", "Echellon", "Som", "Diplome", "Specialitee", "Universitee-etablissement-diploment ", "Fonction Exercer"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 200, 1100, 290));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 200, 1290, 290));
 
         ajout.setBackground(new java.awt.Color(51, 51, 51));
         ajout.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
@@ -107,7 +174,7 @@ public class interemploi extends javax.swing.JFrame {
                 ajoutActionPerformed(evt);
             }
         });
-        getContentPane().add(ajout, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 520, -1, -1));
+        getContentPane().add(ajout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 520, -1, -1));
 
         modifier.setBackground(new java.awt.Color(51, 51, 51));
         modifier.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
@@ -123,7 +190,7 @@ public class interemploi extends javax.swing.JFrame {
                 modifierActionPerformed(evt);
             }
         });
-        getContentPane().add(modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, -1, -1));
+        getContentPane().add(modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 520, -1, -1));
 
         supprimer.setBackground(new java.awt.Color(51, 51, 51));
         supprimer.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
@@ -139,21 +206,21 @@ public class interemploi extends javax.swing.JFrame {
                 supprimerActionPerformed(evt);
             }
         });
-        getContentPane().add(supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 520, -1, -1));
+        getContentPane().add(supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 520, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Les Attestations ");
+        jButton1.setText("ATTESTATIONS");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 520, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/FPO logo1_2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 410, 90));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 410, 90));
 
         recherche.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         recherche.setForeground(new java.awt.Color(153, 153, 153));
@@ -179,7 +246,7 @@ public class interemploi extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/exi1.png"))); // NOI18N
         jLabel15.setToolTipText("Close");
         jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel15MouseClicked(evt);
@@ -191,20 +258,20 @@ public class interemploi extends javax.swing.JFrame {
                 jLabel15MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 10, 20, 20));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, 20, 20));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/min.png"))); // NOI18N
         jLabel14.setToolTipText("Minimize");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel14MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 12, 20, 20));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 12, 20, 20));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/search.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 30, 30));
@@ -223,10 +290,23 @@ public class interemploi extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
 
+        ajout1.setBackground(new java.awt.Color(51, 51, 51));
+        ajout1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        ajout1.setForeground(new java.awt.Color(255, 255, 255));
+        ajout1.setText("Exporter la base de donee en Excel");
+        ajout1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ajout1MouseClicked(evt);
+            }
+        });
+        ajout1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajout1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ajout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, 50));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Login_ajou.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1010, 560));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1010, 560));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1010, 560));
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel1MouseDragged(evt);
@@ -237,7 +317,7 @@ public class interemploi extends javax.swing.JFrame {
                 jLabel1MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 570));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -263,31 +343,31 @@ public class interemploi extends javax.swing.JFrame {
     private void supprimerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supprimerMouseClicked
             try{
           Connection connect;
-         for(int i=0;i<14;i++){
+         for(int i=0;i<20;i++){
          temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
        }
              connect = new Connection();
         Statement stmt = connect.con.createStatement();
       
-          String sql4="DELETE FROM `infopersonnes` WHERE NOM='"+temtab[0]+"'and PRENOM='"+temtab[1]+"'and GRADE='"+temtab[10]+"'and SOM='"+temtab[13]+"' and CIN='"+temtab[5]+"'";
+          String sql4="DELETE FROM `infopersonnes` WHERE NOM='"+temtab[0]+"'and PRENOM='"+temtab[1]+"'and GRADE='"+temtab[12]+"'and SOM='"+temtab[15]+"' and CIN='"+temtab[5]+"'";
      
           
-         String sql3="DELETE FROM `infopersonnels` WHERE NOMAR='"+temtab[2]+"'and PRENOMAR='"+temtab[3]+"'and SEX='"+temtab[4]+"'and DATE_NAISSANCE='"+temtab[5]+"'and SITUATION_FAMILIALE='"+temtab[6]+"' and DATE_RECRUTMENT='"+temtab[7]+"' and Date_affectation='"+temtab[8]+"' and ECHELLE='"+temtab[9]+"' and ECHELON='"+temtab[10]+"'";
+         String sql3="DELETE FROM `infopersonnels` WHERE NOMAR='"+temtab[2]+"'and PRENOMAR='"+temtab[3]+"'and SEX='"+temtab[4]+"'and DATE_NAISSANCE='"+temtab[6]+"'and SITUATION_FAMILIALE='"+temtab[8]+"' and DATE_RECRUTMENT='"+temtab[10]+"' and Date_affectation='"+temtab[11]+"' and ECHELLE='"+temtab[13]+"' and ECHELON='"+temtab[14]+"'";
    
           stmt.executeUpdate(sql4);
           stmt.executeUpdate(sql3);
-           System.out.println("c fais");
+ JOptionPane.showConfirmDialog(null,"Vos donner est bien Supprimer","Supprimer",JOptionPane.CLOSED_OPTION);
          this.dispose();
          interemploi en=new interemploi();
          en.setVisible(true);
       }catch(Exception ex){
-      System.out.println(" le prof n'est pas selectionee");
+        JOptionPane.showConfirmDialog(null,"veuillez selectionner un Fonctionnaire pour continuer","Erreur",JOptionPane.CLOSED_OPTION);
       }
     }//GEN-LAST:event_supprimerMouseClicked
 
     private void modifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifierMouseClicked
             try{  
-        for(int i=0;i<14;i++){
+        for(int i=0;i<20;i++){
          temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
        }
         this.dispose();
@@ -295,20 +375,20 @@ public class interemploi extends javax.swing.JFrame {
      i.setVisible(true);
           }
           catch(Exception ex){
-              System.err.println("veillez selectionner le prof");
+            JOptionPane.showConfirmDialog(null,"veuillez selectionner un Fonctionnaire pour continuer","Erreur",JOptionPane.CLOSED_OPTION);
           }            
     }//GEN-LAST:event_modifierMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
          try{
-        for(int i=0;i<14;i++){
+        for(int i=0;i<20;i++){
          temtab[i] =mod.getValueAt(jTable1.getSelectedRow(), i).toString();
        }
       Les_attestations_emp en=new Les_attestations_emp();
        en.setVisible(true);
         this.dispose();
         }catch(Exception ex){
-            System.err.println("veuillez selection un prof pour continuer");
+            JOptionPane.showConfirmDialog(null,"veuillez selectionner un Fonctionnaire pour continuer","Erreur",JOptionPane.CLOSED_OPTION);
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -334,18 +414,9 @@ public class interemploi extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                  this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 520, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
+                this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 660, Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 300);
     }//GEN-LAST:event_formWindowOpened
 int x,y;
-    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
-     this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);
-    }//GEN-LAST:event_jLabel1MouseDragged
-
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_jLabel1MousePressed
-
     private void rechercheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheFocusGained
         if(recherche.getText().equalsIgnoreCase("    Recherche ..."))
         recherche.setText(null);
@@ -369,6 +440,25 @@ int x,y;
     private void jLabel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseReleased
         jLabel6.setIcon(new ImageIcon(getClass().getResource("icon(2).png")));
     }//GEN-LAST:event_jLabel6MouseReleased
+
+    private void ajout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajout1MouseClicked
+        
+            writetoxel();
+    
+    }//GEN-LAST:event_ajout1MouseClicked
+
+    private void ajout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajout1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ajout1ActionPerformed
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+       x = evt.getX();
+       y = evt.getY();
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+this.setLocation((int) evt.getXOnScreen() - x, (int) evt.getYOnScreen() - y);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -407,6 +497,7 @@ int x,y;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ajout;
+    private javax.swing.JButton ajout1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;

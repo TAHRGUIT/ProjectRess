@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 
@@ -91,7 +92,7 @@ public class InfoPersonnes {
         i++;   
         }
         } catch (Exception ex) {
-            Logger.getLogger(InfoPersonnes.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee ","Erreur",JOptionPane.CLOSED_OPTION);
         }
    
     }

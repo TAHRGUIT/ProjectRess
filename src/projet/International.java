@@ -26,6 +26,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class International extends OrdreDeMission {
    private int id[] = {1};
@@ -83,24 +84,23 @@ public class International extends OrdreDeMission {
  
     }
         catch(Exception e){
-            System.out.println("ghjk");
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee","Erreur",JOptionPane.CLOSED_OPTION);
         }
         
    }
         public void imagee(Document document)throws Exception{
-          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
-            Image image=Image.getInstance(imageUrl+"logo.png");
+            Image image=Image.getInstance("logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
             document.add(image);
             
     }
-    public void quitter_territoire(String Nom,String Prenom,String Grade,String Adress_perso,String Affectation,String Du,String Au,String Motif,String Avis_de_chef){
+    public void quitter_territoire(String Nom,String Prenom,String Grade,String Adress_perso,String Affectation,String Du,String Au,String Motif,String Avis_de_chef,String url){
      
 
        Document document = new Document(PageSize.A4);
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("quitter territoire de "+Nom+".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(url+"/quitter territoire de "+Nom+".pdf"));
               
                 document.open();
             imagee(document);
@@ -157,15 +157,10 @@ public class International extends OrdreDeMission {
         table.addCell("Cachet  et  signature\n\n\n\n\n\n\n\n");
         document.add(table);
         document.close();
-          Desktop desktop = Desktop.getDesktop();
-            if (desktop.isSupported(Desktop.Action.OPEN)) {
-                desktop.open(new File("quitter territoire de "+Nom+".pdf"));
-            } else {
-                System.out.println("Open is not supported");
-            }
+
             
          }catch(Exception ex){
-       System.out.print("Veuillez fermer votre Precedent pdf Pour Generer une Autre Fois");
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
          }
  }
 }

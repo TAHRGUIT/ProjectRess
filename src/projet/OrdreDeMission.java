@@ -26,6 +26,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class OrdreDeMission extends Attestations {
    private int id[];
@@ -84,19 +85,18 @@ public class OrdreDeMission extends Attestations {
                }
     }
         catch(Exception e){
-            System.out.println("ghjk");
+           JOptionPane.showConfirmDialog(null,"Ereur a la base de donnee","Erreur",JOptionPane.CLOSED_OPTION);
         }
         
    }
            public void imagee(Document document)throws Exception{
-          URL imageUrl = getClass().getProtectionDomain().getCodeSource().getLocation();
-            Image image=Image.getInstance(imageUrl+"logo.png");
+            Image image=Image.getInstance("logo.png");
             image.scaleAbsolute(224,70);
             image.setAlignment(Image.MIDDLE);
             document.add(image);
             
     }
-   public void ordre_mission(String Nom,String Prenom,String Grade,String mission_a,String Objet,String Moyen_tr,String du,String au,String autre){
+   public void ordre_mission(String Nom,String Prenom,String Grade,String mission_a,String Objet,String Moyen_tr,String du,String au,String autre,String url){
    Document document = new Document(PageSize.A4);
         try {
             PdfWriter.getInstance(document, new FileOutputStream("Ordre de Mission de "+Nom+".pdf"));
@@ -115,9 +115,9 @@ public class OrdreDeMission extends Attestations {
             Paragraph pa = new Paragraph("Ordre de Mission", FontFactory.getFont(FontFactory.TIMES, 30, Font.UNDERLINE, BaseColor.DARK_GRAY));
             pa.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(pa);
-            for(int i=0;i<3;i++){
+          
                 document.add(new Paragraph(" "));
-            }
+            
             Paragraph param = new Paragraph("Le Doyen de la Faculté Polydisciplinaire de Ouarzazate\n\n", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
                                    param.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(param);
@@ -202,22 +202,40 @@ public class OrdreDeMission extends Attestations {
          cell.setColspan(4);
       table.addCell(cell);
         document.add(table);
-       Paragraph para = new Paragraph(text4+"\n\n\n\n", FontFactory.getFont(FontFactory.TIMES, 18, Font.NORMAL, BaseColor.DARK_GRAY));
+       Paragraph para = new Paragraph(text4+"\n", FontFactory.getFont(FontFactory.TIMES, 15, Font.NORMAL, BaseColor.DARK_GRAY));
 document.add(para);
- Paragraph time = new Paragraph("                Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 17, Font.BOLD, BaseColor.DARK_GRAY));
+ Paragraph time = new Paragraph("                Fait à Ouarzazate le : "+tdnow,FontFactory.getFont(FontFactory.TIMES, 14, Font.BOLD, BaseColor.DARK_GRAY));
                        time.setAlignment(Paragraph.ALIGN_CENTER);
  document.add(time);
-        document.close();
-          Desktop desktop = Desktop.getDesktop();
+
+                document.add(new Paragraph(" "));
+            
+             PdfPTable table3 = new PdfPTable(2);
+       PdfPCell cell3=new PdfPCell();
+      //contenu du tableau.
+      cell3 = new PdfPCell(new Phrase("                                                    Signature :"));
+      cell3.setColspan(2);
+      table3.addCell(cell3);
+        table3.addCell("\nChef de departement / Secrétaire général :\n\n");
+        table3.addCell("\nDoyen\n");
+        table3.addCell("\n\n\n\n\n\n");
+        table3.addCell("\n\n\n\n\n\n");
+            document.add(table3);
+     /* Open Pdf */
+            Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.OPEN)) {
                 desktop.open(new File("Ordre de Mission de "+Nom+".pdf"));
             } else {
                 System.out.println("Open is not supported");
             }
+        document.close();
+
             
          
         }catch(Exception ex){
- 
+           JOptionPane.showConfirmDialog(null,"Veuillez fermer l'ancien PDF pour generer un autre ","Enregistrer",JOptionPane.CLOSED_OPTION);
+
  }
  }
+  
 }
